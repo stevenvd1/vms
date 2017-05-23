@@ -17,39 +17,71 @@
 
     <!-- Latest compiled and minified CSS -->
 
-    {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('faviocon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    {% block stylesheets %}
+
+{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
 
   </head>
 
   <body>
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="http://localhost/vms/web/index.php">Hoi</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Welkom</a></li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Artikel<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="http://localhost/vms/web/app_dev.php/artikelen">Overzicht</a></li>
-              <li><a href="http://localhost/vms/web/app_dev.php/artikelen/nieuw">Toevoegen</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Test</a></li>
-          <li><a href="#">Page 3</a></li>
-        </ul>
-      </div>
-    </nav>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <a style="margin-top:-12px"class="navbar-brand" href="http://vms-sjhdonge395663.codeanyapp.com/web/app_dev.php"><img src="http://i.imgur.com/G0WEpFr.png" alt="Hoi">
+        </a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-hdd"></span> Artikelen <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://vms-sjhdonge395663.codeanyapp.com/web/app_dev.php/artikelen">Overzicht</a></li>
+            <li><a href="http://vms-sjhdonge395663.codeanyapp.com/web/app_dev.php/artikelen/nieuw">Toevoegen</a></li>
+
+          </ul>
+        </li>
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Bestelopdracht</a></li>
+         <ul class="dropdown-menu">
+            <li><a href="http://vms-sjhdonge395663.codeanyapp.com/web/app_dev.php/goederen/bestelopdracht">Bestelopdracht</a></li>
+
+          </ul>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://vms-sjhdonge395663.codeanyapp.com/web/app_dev.php/logout"><span class="glyphicon glyphicon-user"></span> Uitloggen</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Inloggen</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           {% for flash_message in app.session.flashbag.get('notice') %}
+              <div class="alert alert-danger">{{flash_message}}</div>
+          {% endfor %}
+          {% for flash_message in app.session.flashbag.get('gewijzigd') %}
+              <div class="alert alert-info">{{flash_message}}</div>
+          {% endfor %}
+           {% for flash_message in app.session.flashbag.get('toegevoegd') %}
               <div class="alert alert-success">{{flash_message}}</div>
           {% endfor %}
               {% block body %}{% endblock %}
@@ -58,7 +90,9 @@
 </div>
     </div><!-- /.container -->
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+  {% endblock %}
+
 
   </body>
 </html>

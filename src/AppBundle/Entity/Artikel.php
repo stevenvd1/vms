@@ -25,7 +25,7 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="naamsd", type="string", length=255, nullable=true)
+     * @ORM\Column(name="naam", type="string", length=255, nullable=true)
      */
     private $naam;
 

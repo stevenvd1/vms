@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a class="btn btn-default" href="../">Terug</a>
+<hr>
+<h2 class="page-header">{{artikel.naam}}</h2>
+<ul class="list-group">
+<li class="list-group-item">Artikelnummer: {{artikel.bestelserie}}</li>
+<li class="list-group-item">Specificaties:: {{artikel.specs}}</li>
+<li class="list-group-item">Magazijnlocatie: {{artikel.locatie}}</li>
+<li class="list-group-item">Minimale voorraad: {{artikel.minVoorraad}}</li>
+<li class="list-group-item">Huidige voorraad: {{artikel.Voorraad}}</li>
+<li class="list-group-item">Bestelserie: {{artikel.bestelserie}}</li>
+</ul>
+<p>
+</p>
+{% endblock %}

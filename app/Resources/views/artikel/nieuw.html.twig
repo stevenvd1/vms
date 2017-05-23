@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <h2 class="page-header">Nieuw Artikel</h2>
+ <form method="post" action="">
+     {{ form_widget(form) }}
+     <input class="btn btn-default" type="submit">
+     <a href="javascript:history.back()">Annuleren</a>
+ </form>
+{% endblock %}

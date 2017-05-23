@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<h2 class="page-header">Artikelen overzicht</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Artikelnummer</th>
+<th>Naam</th>
+<th>Technische Specificaties</th>
+<th>Magazijnlocatie</th>
+<th>Inkoopprijs</th>
+<th>Minimale voorraad</th>
+<th>Voorraad</th>
+<th>Bestelserie</th>
+</tr>
+</thead>
+<tbody>
+{% for artikel in artikelen %}
+<tr>
+<th scope="row"> {{artikel.artikelnr}} </th>
+<td>{{artikel.naam}}</td>
+<td>{{artikel.specs}}</td>
+<td>{{artikel.locatie}}</td>
+<td>€{{artikel.inkoopprijs}},-</td>
+<td>{{artikel.MinVoorraad}}</td>
+<td>{{artikel.Voorraad}}</td>
+<td>{{artikel.bestelserie}}</td>
+<td><a href="detailles/{{ artikel.artikelnr }}" class="btn btn-success">Zien</a></td>
+<td><a href="wijzig/{{ artikel.artikelnr }}" class="btn btn-info">Wijzig</a></td>
+<td><a href="verwijder/{{ artikel.artikelnr }}" class="btn btn-danger">Verwijder</a></td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(artikelen) }}
+</div>
+{% endblock %}

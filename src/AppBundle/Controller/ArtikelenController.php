@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\Type\ArtikelFormulier;
 use AppBundle\Form\Type\ArtikelWijzigFormulier;
-
+use blabla
 class ArtikelenController extends Controller
 {
     /**

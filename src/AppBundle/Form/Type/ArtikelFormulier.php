@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 //vul aan als je andere invoerveld-typen wilt gebruiken in je formulier
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 //EntiteitType vervangen door b.v. KlantType
@@ -24,16 +25,16 @@ $builder
         ->add('specs', TextType::class)
 ;
 $builder
-        ->add('locatie', IntegerType::class)
+        ->add('locatie', TextType::class)
 ;
 $builder
-        ->add('inkoopprijs', TextType::class)
+        ->add('inkoopprijs', MoneyType::class)
 ;
 $builder
-        ->add('MinVoorraad', IntegerType::class)
+        ->add('minVoorraad', IntegerType::class)
 ;
 $builder
-        ->add('Voorraad', IntegerType::class)
+        ->add('voorraad', IntegerType::class)
 ;
 $builder
         ->add('bestelserie', IntegerType::class)

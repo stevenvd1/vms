@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Artikel
@@ -19,6 +20,8 @@ class Artikel
      * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Assert\Range(
+     * max = 1000000000)
      */
     private $artikelnr;
 
@@ -35,39 +38,69 @@ class Artikel
      * @ORM\Column(name="specs", type="string", length=255)
      */
     private $specs;
-
-    /**
+   /**
      * @var string
      *
-     * @ORM\Column(name="locatie", type="string", length=255)
+     * @ORM\Column(name="locatie", type="string", length=6, nullable=false)
+     * @Assert\Regex(
+     *    pattern = "/^20|[0-1]{1}[0-9]{1}\/[A-Z][0]{1}[0-9]{1}|10$/i",
+     *    match=true,
+     *    message="Ongeldige locatie [ERROR1]")
+     * @Assert\Regex(
+     *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR2]")
+     * @Assert\Regex(
+     *    pattern = "/^[3-9]{1}[0-9]{1}\/[A-Z][0-9]{1}$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR3]")
+     * @Assert\Regex(
+     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR4]")
+     * @Assert\Regex(
+     *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][2-9]{1}[0-9]{1}$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR5]")
+     * @Assert\Regex(
+     *    pattern = "/^[0-9A-Za-z]+$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR6]")
      */
     private $locatie;
-
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
+     * @Assert\Range(
+     *  max = 5000)
      */
     private $inkoopprijs;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="minVoorraad", type="string", length=255)
+     * @ORM\Column(name="minVoorraad", type="integer", length=255)
+     * @Assert\Range(
+     *  max = 1000)
      */
     private $minVoorraad;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="voorraad", type="string", length=255)
+     * @ORM\Column(name="voorraad", type="integer", length=6)
+     * @Assert\Range(
+     *  max = 2000)
      */
     private $voorraad;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="bestelserie", type="string", length=255)
+     * @ORM\Column(name="bestelserie", type="integer", length=255)
+     * @Assert\Range(
+     *  max = 10000)
      */
     private $bestelserie;
 
@@ -173,7 +206,7 @@ class Artikel
     /**
      * Set inkoopprijs
      *
-     * @param string $inkoopprijs
+     * @param integer $inkoopprijs
      *
      * @return Artikel
      */
@@ -187,14 +220,14 @@ class Artikel
     /**
      * Get inkoopprijs
      *
-     * @return string
+     * @return int
      */
     public function getInkoopprijs()
     {
         return $this->inkoopprijs;
     }
 
-    /**
+      /**
      * Set minVoorraad
      *
      * @param string $minVoorraad
@@ -222,7 +255,7 @@ class Artikel
     /**
      * Set voorraad
      *
-     * @param string $voorraad
+     * @param integer $voorraad
      *
      * @return Artikel
      */
@@ -236,7 +269,7 @@ class Artikel
     /**
      * Get voorraad
      *
-     * @return string
+     * @return int
      */
     public function getVoorraad()
     {
@@ -246,7 +279,7 @@ class Artikel
     /**
      * Set bestelserie
      *
-     * @param string $bestelserie
+     * @param integer $bestelserie
      *
      * @return Artikel
      */
@@ -260,7 +293,7 @@ class Artikel
     /**
      * Get bestelserie
      *
-     * @return string
+     * @return int
      */
     public function getBestelserie()
     {

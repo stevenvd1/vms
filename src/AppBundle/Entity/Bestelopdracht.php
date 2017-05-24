@@ -23,10 +23,10 @@ class Bestelopdracht
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="NaamVanLeverancier", type="string", length=255, unique=true)
+     * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
+     * @ORM\JoinColumn(name="naamleverancier", referencedColumnName="id")
      */
-    private $naamVanLeverancier;
+    private $naamleverancier;
 
     /**
      * @var int
@@ -62,27 +62,27 @@ class Bestelopdracht
     }
 
     /**
-     * Set naamVanLeverancier
+     * Set naamleverancier
      *
-     * @param string $naamVanLeverancier
+     * @param string $naamleverancier
      *
      * @return Bestelopdracht
      */
-    public function setNaamVanLeverancier($naamVanLeverancier)
+    public function setNaamLeverancier($naamleverancier)
     {
-        $this->naamVanLeverancier = $naamVanLeverancier;
+        $this->naamleverancier = $naamleverancier;
 
         return $this;
     }
 
     /**
-     * Get naamVanLeverancier
+     * Get naamleverancier
      *
      * @return string
      */
-    public function getNaamVanLeverancier()
+    public function getNaamLeverancier()
     {
-        return $this->naamVanLeverancier;
+        return $this->naamleverancier;
     }
 
     /**

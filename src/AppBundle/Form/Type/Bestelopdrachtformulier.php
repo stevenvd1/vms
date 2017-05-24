@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 //EntiteitType vervangen door b.v. KlantType
 class Bestelopdrachtformulier extends AbstractType
@@ -19,7 +20,13 @@ class Bestelopdrachtformulier extends AbstractType
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
 $builder
-        ->add('naamVanLeverancier', IntegerType::class);
+        ->add('naamleverancier', EntityType::class, array(
+
+              'class' => 'AppBundle:naamleverancier',
+
+              'choice_label' => 'naam',
+
+      ));
 $builder
         ->add('bestelordernummer', TextType::class);
 $builder

@@ -3,14 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * NaamLeverancier
+ * naamleverancier
  *
- * @ORM\Table(name="naam_leverancier")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\NaamLeverancierRepository")
+ * @ORM\Table(name="naamleverancier")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\naamleverancierRepository")
  */
-class NaamLeverancier
+class naamleverancier
 {
     /**
      * @var int
@@ -24,10 +25,15 @@ class NaamLeverancier
     /**
      * @var string
      *
-     * @ORM\Column(name="NaamLeverancier", type="string", length=255, unique=true)
+     * @ORM\Column(name="naam", type="string", length=255, unique=true)
      */
-    private $naamLeverancier;
+    private $naam;
 
+    /**
+     * @var string
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="naamleverancier")
+     */
+    private $bestelopdracht;
 
     /**
      * Get id
@@ -40,27 +46,31 @@ class NaamLeverancier
     }
 
     /**
-     * Set naamLeverancier
+     * Set naam
      *
-     * @param string $naamLeverancier
+     * @param string $naam
      *
-     * @return NaamLeverancier
+     * @return naamleverancier
      */
-    public function setNaamLeverancier($naamLeverancier)
+    public function setNaam($naam)
     {
-        $this->naamLeverancier = $naamLeverancier;
+        $this->naam = $naam;
 
         return $this;
     }
 
     /**
-     * Get naamLeverancier
+     * Get naam
      *
      * @return string
      */
-    public function getNaamLeverancier()
+    public function getNaam()
     {
-        return $this->naamLeverancier;
+        return $this->naam;
     }
-}
 
+    public function __construct()
+        {
+            $this->producten = new ArrayCollection();
+        }
+}

@@ -10,8 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\Type\ArtikelFormulier;
 use AppBundle\Form\Type\ArtikelWijzigFormulier;
+use AppBundle\Form\Type\Bestelopdrachtformulier;
+use AppBundle\Entity\Bestelopdracht;
 
-class ArtikelenController extends Controller
+class GoederenController extends Controller
 {
 
    /**
@@ -20,7 +22,7 @@ class ArtikelenController extends Controller
     public function bestelopdracht(Request $request)
     {
       $bestelopdracht = new bestelopdracht();
-      $form = $this->createForm(BestelopdrachtFormulier::class, $bestelopdracht);
+      $form = $this->createForm(Bestelopdrachtformulier::class, $bestelopdracht);
 
 
     		$form->handleRequest($request);
@@ -39,7 +41,7 @@ class ArtikelenController extends Controller
 
 
 
-    		return new Response($this->render('goederen/bestelopdracht.html.twig', array('form' => $form->createView())));
+    		return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
     	}
 

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+
+<form>
+</form>
+</div>
+
+
+<br>
+<h2 class="page-header">Artikel Wijzigen</h2>
+<table class="table table-striped">
+
+  <div class="form-wrapper">
+    <div class="form-inner-wrapper">
+      <form autocomplete="on" action="https://brico.squarespace.com" method="POST" onSubmit=" location.href = '' + document.getElementById('username').value; return false; ">
+          <div class="field-list clear">
+               <div id="username-input" class="form-item field text"><strong>Artikelnummer:</strong>
+                  <input class="field-element text" type="number" id="username" name="username">&nbsp;&nbsp;<button class="btn btn-info" type="submit"> <span class="glyphicon glyphicon-search">&nbsp;</span>Doorgaan</button>
+                </div>
+          </div>
+
+
+
+        <div class="hidden form-submission-text">Redirecting</div>
+        <div class="hidden form-submission-html" data-submission-html=""></div>
+      </form>
+    </div>
+</div>
+<br><br>
+
+<p>Vul eerst het artikelnummer in en druk vervolgens op doorgaan om naar het desbetreffende artikel te gaan waarin gegevens gewijzigd kunnen worden.</p>
+
+{% endblock %}

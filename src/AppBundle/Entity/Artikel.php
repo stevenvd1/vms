@@ -53,7 +53,7 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="min_voorraad", type="string", length=255)
+     * @ORM\Column(name="minVoorraad", type="string", length=255)
      */
     private $minVoorraad;
 

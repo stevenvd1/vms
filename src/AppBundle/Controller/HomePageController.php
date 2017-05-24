@@ -10,13 +10,13 @@ use AppBundle\Entity\Home;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/home/", name="homepage")
+     * @Route("/", name="homepage")
      */
- public function homepage(Request $request) 
+ public function homepage(Request $request)
     {
       $home = $this->getDoctrine()->getRepository('AppBundle:Home')->findall();
 
-        return $this->render('home/index.html.twig', array(
+        return $this->render('home/homepage.html.twig', array(
           'homepage' => $home
     ));
     }

@@ -79,7 +79,17 @@ class ArtikelenController extends Controller
       			return $this->redirect($this->generateurl("artikel_lijst"));
       		}
 
+          /**
+           * @Route("/artikelen/wijzig/", name="wijzigart")
+           */
+          public function homepage(Request $request)
+          {
+            $wijzig = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
 
+              return $this->render('artikel/wijzigpagina.html.twig', array(
+                'wijzigen' => $wijzig
+          ));
+          }
 
     /**
      * @Route("/artikelen/wijzig/{artikelnr}", name="artikel_wijzig")

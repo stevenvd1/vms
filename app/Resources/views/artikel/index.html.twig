@@ -29,7 +29,7 @@
 <td>{{artikel.bestelserie}}</td>
 <td><a href="detailles/{{ artikel.artikelnr }}" class="btn btn-success">Zien</a></td>
 <td><a href="wijzig/{{ artikel.artikelnr }}" class="btn btn-info">Wijzig</a></td>
-<td><a href="verwijder/{{ artikel.artikelnr }}" class="btn btn-danger">Verwijder</a></td>
+<td><a href="verwijder/{{ artikel.artikelnr }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">Verwijder</a></td>
 </tr>
 
 {% endfor %}

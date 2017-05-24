@@ -7,7 +7,7 @@ security:
         in_memory:
             memory:
                 users:
-                    hoofdinanciën:
+                    hoofdfinanciën:
                         password: ww
                         roles: 'ROLE_HFIN'
                     magazijnmeester:

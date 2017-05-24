@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div>
+
+<form>
+</form>
+</div>
+
+
+<br>
+<h2 class="page-header">Home</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Artikelen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="btn btn-success" href="{{ path('artikel_lijst') }}">Lijst van artikelen</a></td>
+</tr>
+<tr>
+<td><a class="btn btn-success" href="{{ path('artikel_nieuw') }}">Nieuw artikel toevoegen</a></td>
+</tr>
+</tbody>
+</table>
+{% endblock %}

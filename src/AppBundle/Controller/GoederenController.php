@@ -12,6 +12,8 @@ use AppBundle\Form\Type\ArtikelFormulier;
 use AppBundle\Form\Type\ArtikelWijzigFormulier;
 use AppBundle\Form\Type\Bestelopdrachtformulier;
 use AppBundle\Entity\Bestelopdracht;
+use AppBundle\Form\Type\Ontvangengoederenformulier;
+use AppBundle\Entity\Ontvangengoederen;
 
 class GoederenController extends Controller
 {

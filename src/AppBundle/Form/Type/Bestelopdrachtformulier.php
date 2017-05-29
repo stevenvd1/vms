@@ -28,11 +28,11 @@ $builder
 
       ));
 $builder
-        ->add('bestelordernummer', TextType::class);
+        ->add('bestelordernummer', IntegerType::class);
 $builder
-        ->add('artikelnummer', TextType::class);
+        ->add('artikelnummer', IntegerType::class);
 $builder
-        ->add('hoeveelheidBestelling', TextType::class);
+        ->add('hoeveelheidBestelling', IntegerType::class);
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

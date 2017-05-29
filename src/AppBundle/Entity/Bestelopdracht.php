@@ -12,33 +12,26 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bestelopdracht
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
 
     /**
-     * @var string
-     * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
-     * @ORM\JoinColumn(name="naamleverancier", referencedColumnName="id")
-     */
+    * @var int
+    * @ORM\Id
+    * @ORM\Column(name="naamleverancier", type="integer", unique=true)
+    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
+    */
     private $naamleverancier;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Bestelordernummer", type="integer", unique=true)
+     * @ORM\Column(name="bestelordernummer", type="integer", unique=true)
      */
     private $bestelordernummer;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Artikelnummer", type="integer")
+     * @ORM\Column(name="artikelnummer", type="integer")
      */
     private $artikelnummer;
 
@@ -46,29 +39,19 @@ class Bestelopdracht
     /**
      * @var int
      *
-     * @ORM\Column(name="HoeveelheidBestelling", type="integer")
+     * @ORM\Column(name="hoeveelheidBestelling", type="integer")
      */
     private $hoeveelheidBestelling;
 
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * Set naamleverancier
      *
-     * @param string $naamleverancier
+     * @param integer $naamleverancier
      *
      * @return Bestelopdracht
      */
-    public function setNaamLeverancier($naamleverancier)
+    public function setnaamleverancier($naamleverancier)
     {
         $this->naamleverancier = $naamleverancier;
 
@@ -78,9 +61,9 @@ class Bestelopdracht
     /**
      * Get naamleverancier
      *
-     * @return string
+     * @return int
      */
-    public function getNaamLeverancier()
+    public function getnaamleverancier()
     {
         return $this->naamleverancier;
     }
@@ -92,7 +75,7 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setBestelordernummer($bestelordernummer)
+    public function setbestelordernummer($bestelordernummer)
     {
         $this->bestelordernummer = $bestelordernummer;
 
@@ -104,7 +87,7 @@ class Bestelopdracht
      *
      * @return int
      */
-    public function getBestelordernummer()
+    public function getbestelordernummer()
     {
         return $this->bestelordernummer;
     }
@@ -116,7 +99,7 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setArtikelnummer($artikelnummer)
+    public function setartikelnummer($artikelnummer)
     {
         $this->artikelnummer = $artikelnummer;
 
@@ -128,7 +111,7 @@ class Bestelopdracht
      *
      * @return int
      */
-    public function getArtikelnummer()
+    public function getartikelnummer()
     {
         return $this->artikelnummer;
     }
@@ -141,7 +124,7 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setHoeveelheidBestelling($hoeveelheidBestelling)
+    public function sethoeveelheidBestelling($hoeveelheidBestelling)
     {
         $this->hoeveelheidBestelling = $hoeveelheidBestelling;
 
@@ -153,7 +136,7 @@ class Bestelopdracht
      *
      * @return int
      */
-    public function getHoeveelheidBestelling()
+    public function gethoeveelheidBestelling()
     {
         return $this->hoeveelheidBestelling;
     }

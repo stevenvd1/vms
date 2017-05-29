@@ -1,19 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div>
-
-<form>
-</form>
-</div>
 
 
 <br>
-<h2 class="page-header">Home</h2>
+<h2 class="page-header">Homepage</h2>
 <table class="table table-striped">
 <thead>
 <tr>
-<th>Artikelen</th>
+<th>Voorraad</th>
 </tr>
 </thead>
 <tbody>
@@ -24,5 +19,9 @@
 <td><a class="btn btn-success" href="{{ path('artikel_nieuw') }}">Nieuw artikel toevoegen</a></td>
 </tr>
 </tbody>
+
+<img src="VoorpaginaAfbeelding.gif" STYLE="border:30px solid #40bf40; border-radius:10px; padding-bottom:50px; padding-top:5px ;padding-left:5px;">
+
+
 </table>
 {% endblock %}

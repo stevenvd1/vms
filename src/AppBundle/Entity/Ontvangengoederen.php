@@ -43,9 +43,9 @@ class Ontvangengoederen
     private $kwaliteit;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="artikelnummer", type="string", length=255, unique=true)
+     * @ORM\Column(name="artikelnummer", type="integer")
      */
     private $artikelnummer;
 
@@ -62,6 +62,8 @@ class Ontvangengoederen
      * @ORM\Column(name="leverancier", type="string", length=255)
      */
     private $leverancier;
+
+
 
 
     /**

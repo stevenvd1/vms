@@ -29,7 +29,10 @@ $builder
 ;
 $builder
         ->add('inkoopprijs', MoneyType::class)
-	;
+;
+$builder
+        ->add('verkoopprijs', MoneyType::class)
+;
 $builder
         ->add('minVoorraad', IntegerType::class)
 ;

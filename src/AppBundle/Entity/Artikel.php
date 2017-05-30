@@ -30,6 +30,7 @@ class Artikel
      *    message="Ongeldige locatie [ERROR6]")
      * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
      */
+     //de inkoopprijs kan maximaal uit 1000000000 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $artikelnr;
 
     /**
@@ -37,6 +38,7 @@ class Artikel
      *
      * @ORM\Column(name="naam", type="string", length=255, nullable=true)
      */
+     //de naam kan maximaal uit 255 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $naam;
 
     /**
@@ -74,6 +76,7 @@ class Artikel
      *    match=false,
      *    message="Ongeldige locatie [ERROR6]")
      */
+     //de locatie kan maximaal uit 6 karakters bestaan en een bepaalde volgorde anders zal er een foutmelding opduiken.
     private $locatie;
     /**
      * @var integer
@@ -81,8 +84,18 @@ class Artikel
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
      * @Assert\Range(
      *  max = 5000)
+     *  message="Ongeldige inkoopprijs")
      */
+     //de inkoopprijs kan maximaal 5000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $inkoopprijs;
+
+    /**
+    * @var integer
+    * @ORM\Column(name="verkoopprijs", type="decimal", precision=10, scale=2)
+    * @Assert\Range(
+    * max = 5000)
+    */
+    private $verkoopprijs;
 
     /**
      * @var integer
@@ -90,7 +103,9 @@ class Artikel
      * @ORM\Column(name="minVoorraad", type="integer", length=255)
      * @Assert\Range(
      *  max = 1000)
+     *  message="Ongeldige minimale voorraad")
      */
+     //de minimale voorraad kan maximaal 1000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $minVoorraad;
 
     /**
@@ -99,7 +114,9 @@ class Artikel
      * @ORM\Column(name="voorraad", type="integer", length=6)
      * @Assert\Range(
      *  max = 2000)
+     *  message="Ongeldige voorraad")
      */
+      //de voorraad kan maximaal 2000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $voorraad;
 
     /**
@@ -108,7 +125,9 @@ class Artikel
      * @ORM\Column(name="bestelserie", type="integer", length=255)
      * @Assert\Range(
      *  max = 10000)
+     *  message="Ongeldige bestelserie")
      */
+      //de betselserie kan maximaal 10000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $bestelserie;
 
 
@@ -232,6 +251,31 @@ class Artikel
     public function getInkoopprijs()
     {
         return $this->inkoopprijs;
+    }
+
+
+    /**
+     * Set verkoopprijs
+     *
+     * @param integer $verkoopprijs
+     *
+     * @return Artikel
+     */
+    public function setVerkoopprijs($verkoopprijs)
+    {
+        $this->verkoopprijs = $verkoopprijs;
+
+        return $this;
+    }
+
+    /**
+     * Get verkoopprijs
+     *
+     * @return int
+     */
+    public function getVerkoopprijs()
+    {
+        return $this->verkoopprijs;
     }
 
       /**

@@ -11,6 +11,10 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+
 
 //EntiteitType vervangen door b.v. KlantType
 class Ontvangengoederenformulier extends AbstractType
@@ -19,14 +23,23 @@ class Ontvangengoederenformulier extends AbstractType
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
-$builder
-        ->add('datum', TextType::class);
+
+    $builder
+
+                ->add('Datum', DateType::class, array(
+    'widget' => 'single_text',
+  ));
 $builder
         ->add('hoeveelheid', TextType::class);
 $builder
-        ->add('kwaliteit', TextType::class);
+        ->add('kwaliteit', ChoiceType::class, array(
+    'choices' => array(
+        'Main Statuses' => array(
+            'Yes' => 'stock_yes',
+            'No' => 'stock_no',
+        ))));
 $builder
-        ->add('artikelnummer', TextType::class);
+        ->add('artikelnummer', IntegerType::class);
 $builder
         ->add('omschrijving', TextType::class);
 $builder

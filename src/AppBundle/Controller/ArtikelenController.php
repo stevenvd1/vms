@@ -78,11 +78,22 @@ class ArtikelenController extends Controller
             );
       			return $this->redirect($this->generateurl("artikel_lijst"));
       		}
+          /**
+           * @Route("/artikelen/verwijder/", name="verwijderart")
+           */
+          public function verwijder(Request $request)
+          {
+            $verwijder = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
+
+              return $this->render('artikel/verwijderpagina.html.twig', array(
+                'verwijderen' => $verwijder
+          ));
+          }
 
           /**
            * @Route("/artikelen/wijzig/", name="wijzigart")
            */
-          public function homepage(Request $request)
+          public function wijzig(Request $request)
           {
             $wijzig = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
 

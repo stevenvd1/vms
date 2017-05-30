@@ -18,19 +18,45 @@ use AppBundle\Entity\Ontvangengoederen;
 class GoederenController extends Controller
 {
 
+  /**
+   * @Route("/bestellingen", name="bestel_lijst")
+   */
+  public function alleBestellingen(Request $request)
+  {
+
+    $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
+
+    /**
+    * @var $paginator \Knp\Component\Pager\Paginator
+    */
+    $paginator  = $this->get('knp_paginator');
+    $result = $paginator->paginate(
+        $bestellingen,
+        $request->query->getInt('page', 1),
+        $request->query->getInt('limit', 10)
+      );
+
+      return $this->render('goederen/bestellingen.html.twig', array(
+        'bestellingen' => $result
+
+
+      ));
+
+  }
+
    /**
-     * @Route("/goederen/bestelopdracht", name="bestelopdracht")
+     * @Route("/goederen/bestelopdracht", name="bestelopdracht_nieuw")
      */
-    public function bestelopdracht(Request $request)
+    public function nieuweBestelopdracht(Request $request)
     {
-      $bestelopdracht = new bestelopdracht();
-      $form = $this->createForm(Bestelopdrachtformulier::class, $bestelopdracht);
+      $nieuweBestelopdracht = new Bestelopdracht();
+      $form = $this->createForm(Bestelopdrachtformulier::class, $nieuweBestelopdracht);
 
 
     		$form->handleRequest($request);
     		if ($form->isSubmitted() && $form->isValid()) {
     			$em = $this->getDoctrine()->getManager();
-    			$em->persist($bestelopdracht);
+    			$em->persist($nieuweBestelopdracht);
     			$em->flush();
 
           $this->addFlash(
@@ -38,7 +64,7 @@ class GoederenController extends Controller
               'Bestelopdracht Toegevoegd'
             );
 
-    			return $this->redirect($this->generateurl("artikel_lijst"));
+    			return $this->redirect($this->generateurl("bestel_lijst"));
     		}
 
 
@@ -48,7 +74,7 @@ class GoederenController extends Controller
     	}
 
       /**
-     * @Route("/goederen/ontvangengoederen", name="ontvangengoederen")
+     * @Route("/goederen/ontvangst", name="ontvangengoederen")
      */
     public function ontvangengoederen(Request $request)
     {
@@ -61,7 +87,9 @@ class GoederenController extends Controller
     			$em = $this->getDoctrine()->getManager();
     			$em->persist($ontvangengoederen);
     			$em->flush();
-        }
+
   	return $this->redirect($this->generateurl("artikel_lijst"));
     }
+    return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
+  }
 }

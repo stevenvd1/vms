@@ -13,26 +13,14 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 //EntiteitType vervangen door b.v. KlantType
-class Bestelopdrachtformulier extends AbstractType
+class MinimumVoorraadformulier extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
 $builder
-        ->add('naamleverancier', EntityType::class, array(
-
-              'class' => 'AppBundle:naamleverancier',
-
-              'choice_label' => 'naam',
-
-      ));
-$builder
-        ->add('bestelordernummer', IntegerType::class);
-$builder
-        ->add('artikelnummer', IntegerType::class);
-$builder
-        ->add('hoeveelheidBestelling', IntegerType::class);
+        ->add('minVoorraad', TextType::class);
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer
@@ -41,7 +29,7 @@ $builder
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Bestelopdracht', //Entiteit vervangen door b.v. Klant
+			'data_class' => 'AppBundle\Entity\Artikel', //Entiteit vervangen door b.v. Klant
 		));
 	}
 }

@@ -5,24 +5,30 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path('login') }}" method="post">
-    <center><label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required />
-    <br>
-    <br>
+{% block body %}
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" required />
+<form action="{{ path('login') }}" method="post" class="form-signin">
+      <h2 class="form-signin-heading">Inloggen</h2>
+      <label for="username" class="sr-only">Gebruikersnaam</label>
+      <input type="text" id="username" name="_username" class="form-control" placeholder="Gebruikersnaam" required autofocus>
+      <label for="password" class="sr-only">Wachtwoord</label>
+      <input type="password" id="password" name="_password" class="form-control" placeholder="Wachtwoord" required />
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
-<br><br>
-<hr>
-    <button type="submit">login</button><br>
-    <input type="checkbox" checked="checked"> Onthoud me<br>
-    <span class="psw"> <a href="#">Wachtwoord</a> vergeten?</span>
-    </center>
-</form>
+
+{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

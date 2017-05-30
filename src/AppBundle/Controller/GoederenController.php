@@ -7,56 +7,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Artikel;
-use AppBundle\Form\Type\ArtikelFormulier;
-use AppBundle\Form\Type\ArtikelWijzigFormulier;
-use AppBundle\Form\Type\Bestelopdrachtformulier;
-use AppBundle\Entity\Bestelopdracht;
-use AppBundle\Form\Type\Ontvangengoederenformulier;
-use AppBundle\Entity\Ontvangengoederen;
+use AppBundle\Entity\Bestelling;
+use AppBundle\Form\Type\Bestelopdrachtform;
+use AppBundle\Form\Type\Verwerkbestelling;
 
 class GoederenController extends Controller
 {
 
-  /**
-   * @Route("/bestellingen", name="bestel_lijst")
-   */
-  public function alleBestellingen(Request $request)
-  {
 
-    $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
-
-    /**
-    * @var $paginator \Knp\Component\Pager\Paginator
-    */
-    $paginator  = $this->get('knp_paginator');
-    $result = $paginator->paginate(
-        $bestellingen,
-        $request->query->getInt('page', 1),
-        $request->query->getInt('limit', 10)
-      );
-
-      return $this->render('goederen/bestellingen.html.twig', array(
-        'bestellingen' => $result
-
-
-      ));
-
-  }
 
    /**
      * @Route("/goederen/bestelopdracht", name="bestelopdracht_nieuw")
      */
-    public function nieuweBestelopdracht(Request $request)
+    public function nieuweBestelling(Request $request)
     {
-      $nieuweBestelopdracht = new Bestelopdracht();
-      $form = $this->createForm(Bestelopdrachtformulier::class, $nieuweBestelopdracht);
+      $nieuweBestelling = new Bestelling();
+      $form = $this->createForm(Bestelopdrachtform::class, $nieuweBestelling);
 
 
     		$form->handleRequest($request);
     		if ($form->isSubmitted() && $form->isValid()) {
     			$em = $this->getDoctrine()->getManager();
-    			$em->persist($nieuweBestelopdracht);
+    			$em->persist($nieuweBestelling);
     			$em->flush();
 
           $this->addFlash(
@@ -64,32 +36,111 @@ class GoederenController extends Controller
               'Bestelopdracht Toegevoegd'
             );
 
-    			return $this->redirect($this->generateurl("bestel_lijst"));
+    			return $this->redirect($this->generateurl("bestellingen"));
     		}
 
 
 
-    		return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
+    		return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
     	}
 
       /**
-     * @Route("/goederen/ontvangst", name="ontvangengoederen")
-     */
-    public function ontvangengoederen(Request $request)
-    {
-      $ontvangengoederen = new ontvangengoederen();
-      $form = $this->createForm(Ontvangengoederenformulier::class, $ontvangengoederen);
+       * @Route("goederen/bestellingen", name="bestellingen")
+       */
+      public function alleBestellingen(Request $request)
+      {
+
+        $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+
+        /**
+        * @var $paginator \Knp\Component\Pager\Paginator
+        */
+        $paginator  = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $bestellingen,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 10)
+          );
+
+          return $this->render('bestellingen/bestellingen.html.twig', array(
+            'bestellingen' => $result
 
 
-    		$form->handleRequest($request);
-    		if ($form->isSubmitted() && $form->isValid()) {
-    			$em = $this->getDoctrine()->getManager();
-    			$em->persist($ontvangengoederen);
-    			$em->flush();
+          ));
 
-  	return $this->redirect($this->generateurl("artikel_lijst"));
-    }
-    return new Response($this->render('goederen/Ontvangengoederen.html.twig', array('form' => $form->createView())));
-  }
+      }
+
+      /**
+       * @Route("/goederen/bestellingen/verwerk/{bestelordernummer}", name="bestel_verwerk")
+       */
+      public function verwerkBestelling($bestelordernummer, Request $request) {
+      $bestaandeBestelling = $this->getDoctrine()->getRepository("AppBundle:Bestelling")->find($bestelordernummer);
+       $form = $this->createForm(Verwerkbestelling::class, $bestaandeBestelling);
+
+       $form->handleRequest($request);
+       if ($form->isSubmitted() && $form->isValid()) {
+       $em = $this->getDoctrine()->getManager();
+       $em->persist($bestaandeBestelling);
+       $em->flush();
+       return $this->redirect($this->generateurl("teontvangen"));
+       }
+
+       return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));
+
+
+       }
+
+       /**
+        * @Route("goederen/bestellingen/te_ontvangen", name="teontvangen")
+        */
+       public function teOntvangen(Request $request)
+       {
+
+         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+
+         /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+         $paginator  = $this->get('knp_paginator');
+         $result = $paginator->paginate(
+             $bestellingen,
+             $request->query->getInt('page', 1),
+             $request->query->getInt('limit', 10)
+           );
+
+           return $this->render('bestellingen/te_ontvangen.html.twig', array(
+             'bestellingen' => $result
+
+
+           ));
+
+       }
+
+       /**
+        * @Route("goederen/bestellingen/ontvangen", name="ontvangen")
+        */
+       public function Ontvangen(Request $request)
+       {
+
+         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+
+         /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+         $paginator  = $this->get('knp_paginator');
+         $result = $paginator->paginate(
+             $bestellingen,
+             $request->query->getInt('page', 1),
+             $request->query->getInt('limit', 10)
+           );
+
+           return $this->render('bestellingen/ontvangen.html.twig', array(
+             'bestellingen' => $result
+
+
+           ));
+
+       }
+
 }

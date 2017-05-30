@@ -48,7 +48,7 @@ class GoederenController extends Controller
     	}
 
       /**
-     * @Route("/goederen/ontvangengoederen", name="ontvangengoederen")
+     * @Route("/goederen/ontvangst", name="ontvangengoederen")
      */
     public function ontvangengoederen(Request $request)
     {
@@ -61,7 +61,9 @@ class GoederenController extends Controller
     			$em = $this->getDoctrine()->getManager();
     			$em->persist($ontvangengoederen);
     			$em->flush();
-        }
+
   	return $this->redirect($this->generateurl("artikel_lijst"));
     }
+    return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
+  }
 }

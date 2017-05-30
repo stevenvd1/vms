@@ -16,10 +16,6 @@ class naamleverancier
     /**
      * @var string
      * @ORM\Column(name="id", type="string", length=255, unique=true)
-
-     * @var int
-     *
-     * @ORM\Column(name="Id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -29,14 +25,12 @@ class naamleverancier
      * @var string
      *
      * @ORM\Column(name="naam", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="naam", mappedBy="naamleverancier")
      */
+
     private $naam;
 
-    /**
-     * @var string
-     * @ORM\OneToMany(targetEntity="bestelopdracht", mappedBy="naamleverancier")
-     */
-    private $bestelopdracht;
+
 
     /**
      * Get Id
@@ -75,5 +69,16 @@ class naamleverancier
     public function __construct()
         {
             $this->producten = new ArrayCollection();
+        }
+      /**
+      * @return string
+      */
+        public function __toString()
+        {
+            try {
+                return (string) $this->naam;
+            } catch (Exception $exception) {
+                return '';
+            }
         }
 }

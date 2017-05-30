@@ -22,6 +22,7 @@ class Artikel
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Assert\Range(
      * max = 1000000000)
+     * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
      */
     private $artikelnr;
 

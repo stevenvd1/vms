@@ -39,7 +39,13 @@ $builder
             'No' => 'stock_no',
         ))));
 $builder
-        ->add('artikelnummer', IntegerType::class);
+        ->add('artikelnummer', EntityType::class, array(
+
+              'class' => 'AppBundle:Artikel',
+
+              'choice_label' => 'artikelnr',
+
+      ));
 $builder
         ->add('omschrijving', TextType::class);
 $builder

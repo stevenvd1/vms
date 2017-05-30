@@ -46,6 +46,8 @@ class Ontvangengoederen
      * @var integer
      *
      * @ORM\Column(name="artikelnummer", type="integer")
+     * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelnr")
+     * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnr")
      */
     private $artikelnummer;
 

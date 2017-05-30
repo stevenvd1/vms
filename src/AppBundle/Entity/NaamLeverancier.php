@@ -25,14 +25,12 @@ class naamleverancier
      * @var string
      *
      * @ORM\Column(name="naam", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="naam", mappedBy="naamleverancier")
      */
+
     private $naam;
 
-    /**
-     * @var string
-     * @ORM\OneToMany(targetEntity="bestelopdracht", mappedBy="naamleverancier")
-     */
-    private $bestelopdracht;
+
 
     /**
      * Get Id

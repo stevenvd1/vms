@@ -14,10 +14,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 class naamleverancier
 {
 
+
     /**
      * @var int
-     *
-     * @ORM\Column(name="Id", type="integer")
+     * @ORM\Column(name="Id", type="string", length=255, unique=true)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -84,5 +84,16 @@ class naamleverancier
     public function __construct()
         {
             $this->producten = new ArrayCollection();
+        }
+      /**
+      * @return string
+      */
+        public function __toString()
+        {
+            try {
+                return (string) $this->naam;
+            } catch (Exception $exception) {
+                return '';
+            }
         }
 }

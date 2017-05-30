@@ -14,9 +14,9 @@ class Bestelopdracht
 {
 
     /**
-    * @var int
+    * @var string
     * @ORM\Id
-    * @ORM\Column(name="naamleverancier", type="integer", unique=true)
+    * @ORM\Column(name="naamleverancier", type="string", unique=true)
     * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
     */
     private $naamleverancier;
@@ -47,7 +47,7 @@ class Bestelopdracht
     /**
      * Set naamleverancier
      *
-     * @param integer $naamleverancier
+     * @param string $naamleverancier
      *
      * @return Bestelopdracht
      */
@@ -61,7 +61,7 @@ class Bestelopdracht
     /**
      * Get naamleverancier
      *
-     * @return int
+     * @return string
      */
     public function getnaamleverancier()
     {

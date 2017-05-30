@@ -14,11 +14,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 class naamleverancier
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @var string
+     * @ORM\Column(name="id", type="string", length=255, unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 

@@ -75,7 +75,9 @@ class Artikel
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
      * @Assert\Range(
      *  max = 5000)
+     *  message="Ongeldige inkoopprijs")
      */
+     //de inkoopprijs kan maximaal 5000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $inkoopprijs;
 
     /**
@@ -84,7 +86,9 @@ class Artikel
      * @ORM\Column(name="minVoorraad", type="integer", length=255)
      * @Assert\Range(
      *  max = 1000)
+     *  message="Ongeldige minimale voorraad")
      */
+     //de minimale voorraad kan maximaal 1000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $minVoorraad;
 
     /**
@@ -93,7 +97,9 @@ class Artikel
      * @ORM\Column(name="voorraad", type="integer", length=6)
      * @Assert\Range(
      *  max = 2000)
+     *  message="Ongeldige voorraad")
      */
+      //de voorraad kan maximaal 2000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $voorraad;
 
     /**
@@ -102,7 +108,9 @@ class Artikel
      * @ORM\Column(name="bestelserie", type="integer", length=255)
      * @Assert\Range(
      *  max = 10000)
+     *  message="Ongeldige bestelserie")
      */
+      //de betselserie kan maximaal 10000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $bestelserie;
 
 

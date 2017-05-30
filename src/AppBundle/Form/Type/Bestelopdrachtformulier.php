@@ -41,7 +41,7 @@ $builder
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Bestelopdracht', //Entiteit vervangen door b.v. Klant
+			'data_class' => 'AppBundle\Entity\bestelopdracht', //Entiteit vervangen door b.v. Klant
 		));
 	}
 }

@@ -139,8 +139,8 @@ class ArtikelenController extends Controller
     */
 
 
-public function searchAction(Request $request){
-
+public function searchAction(Request $request)
+{
   $data = $request->request->get('search');
 
 

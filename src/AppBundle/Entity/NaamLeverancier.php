@@ -16,10 +16,14 @@ class naamleverancier
     /**
      * @var string
      * @ORM\Column(name="id", type="string", length=255, unique=true)
+
+     * @var int
+     *
+     * @ORM\Column(name="Id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    private $Id;
 
     /**
      * @var string
@@ -30,18 +34,18 @@ class naamleverancier
 
     /**
      * @var string
-     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="naamleverancier")
+     * @ORM\OneToMany(targetEntity="bestelopdracht", mappedBy="naamleverancier")
      */
     private $bestelopdracht;
 
     /**
-     * Get id
+     * Get Id
      *
      * @return int
      */
     public function getId()
     {
-        return $this->id;
+        return $this->Id;
     }
 
     /**

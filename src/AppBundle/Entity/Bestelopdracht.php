@@ -109,7 +109,7 @@ class Bestelopdracht
     /**
      * Get artikelnummer
      *
-     * @return int
+     * @return string
      */
     public function getartikelnummer()
     {

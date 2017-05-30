@@ -16,8 +16,8 @@ class Bestelopdracht
     /**
     * @var int
     * @ORM\Id
-    * @ORM\Column(name="naamleverancier", type="integer", unique=true)
-    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
+    * @ORM\Column(name="naamleverancier", type="integer", length=255, unique=true)
+    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="naam")
     */
     private $naamleverancier;
 

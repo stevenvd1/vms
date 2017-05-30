@@ -19,9 +19,15 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Assert\Range(
-     * max = 1000000000)
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @Assert\Regex(
+     *    pattern = "/[A-Z]{2}\/[0-9]{10}+$/i",
+     *    match=true,
+     *    message="Ongeldige locatie [ERROR1]")
+     * @Assert\Regex(
+     *    pattern = "/^[0-9A-Za-z]+$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR6]")
      * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
      */
     private $artikelnr;

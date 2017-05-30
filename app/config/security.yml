@@ -15,6 +15,9 @@ security:
                     inkoper:
                         password: $2y$13$SHqEutCankUz3m6GNUWTjuXMasvPG6CLP6byJ3RaBM7qZYW6opRdy
                         roles: 'ROLE_ADMIN'
+                    magazijnmeester:
+                        password: $2y$13$.mz77fGlPalMSQt8GesBCeP7Cl9DC7.bqmmP3FXpTYlY/8CwHv1Ba
+                        roles: 'ROLE_ADMIN'
 
     encoders:
         Symfony\Component\Security\Core\User\User:

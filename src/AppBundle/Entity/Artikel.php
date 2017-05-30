@@ -79,6 +79,14 @@ class Artikel
     private $inkoopprijs;
 
     /**
+    * @var integer
+    * @ORM\Column(name="verkoopprijs", type="decimal", precision=10, scale=2)
+    * @Assert\Range(
+    * max = 5000)
+    */
+    private $verkoopprijs;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="minVoorraad", type="integer", length=255)
@@ -226,6 +234,31 @@ class Artikel
     public function getInkoopprijs()
     {
         return $this->inkoopprijs;
+    }
+
+
+    /**
+     * Set verkoopprijs
+     *
+     * @param integer $verkoopprijs
+     *
+     * @return Artikel
+     */
+    public function setVerkoopprijs($verkoopprijs)
+    {
+        $this->verkoopprijs = $verkoopprijs;
+
+        return $this;
+    }
+
+    /**
+     * Get verkoopprijs
+     *
+     * @return int
+     */
+    public function getVerkoopprijs()
+    {
+        return $this->verkoopprijs;
     }
 
       /**

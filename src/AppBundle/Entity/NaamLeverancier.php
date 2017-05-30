@@ -16,10 +16,6 @@ class naamleverancier
     /**
      * @var string
      * @ORM\Column(name="id", type="string", length=255, unique=true)
-
-     * @var int
-     *
-     * @ORM\Column(name="Id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -75,5 +71,16 @@ class naamleverancier
     public function __construct()
         {
             $this->producten = new ArrayCollection();
+        }
+      /**
+      * @return string
+      */
+        public function __toString()
+        {
+            try {
+                return (string) $this->naam;
+            } catch (Exception $exception) {
+                return '';
+            }
         }
 }

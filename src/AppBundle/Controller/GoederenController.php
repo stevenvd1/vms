@@ -90,6 +90,6 @@ class GoederenController extends Controller
 
   	return $this->redirect($this->generateurl("artikel_lijst"));
     }
-    return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
+    return new Response($this->render('goederen/Ontvangengoederen.html.twig', array('form' => $form->createView())));
   }
 }

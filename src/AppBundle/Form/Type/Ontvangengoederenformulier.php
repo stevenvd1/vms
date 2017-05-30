@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 //vul aan als je andere invoerveld-typen wilt gebruiken in je formulier
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -35,8 +36,8 @@ $builder
         ->add('kwaliteit', ChoiceType::class, array(
     'choices' => array(
         'Main Statuses' => array(
-            'Yes' => 'stock_yes',
-            'No' => 'stock_no',
+            'Goed' => 'stock_yes',
+            'Slecht' => 'stock_no',
         ))));
 $builder
         ->add('artikelnummer', EntityType::class, array(
@@ -47,7 +48,7 @@ $builder
 
       ));
 $builder
-        ->add('omschrijving', TextType::class);
+        ->add('omschrijving', TextareaType::class);
 $builder
         ->add('leverancier', TextType::class);
 		//zie

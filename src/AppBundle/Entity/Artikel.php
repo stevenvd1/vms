@@ -24,6 +24,7 @@ class Artikel
      * max = 1000000000)
      * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
      */
+     //de inkoopprijs kan maximaal uit 1000000000 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $artikelnr;
 
     /**
@@ -31,6 +32,7 @@ class Artikel
      *
      * @ORM\Column(name="naam", type="string", length=255, nullable=true)
      */
+     //de naam kan maximaal uit 255 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $naam;
 
     /**
@@ -68,6 +70,7 @@ class Artikel
      *    match=false,
      *    message="Ongeldige locatie [ERROR6]")
      */
+     //de locatie kan maximaal uit 6 karakters bestaan en een bepaalde volgorde anders zal er een foutmelding opduiken.
     private $locatie;
     /**
      * @var integer

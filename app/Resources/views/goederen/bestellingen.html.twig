@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<h2 class="page-header">Bestellingen overzicht</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>naamleverancier</th>
+<th>bestelordernummer</th>
+<th>artikelnummer</th>
+<th>hoeveelheidBestelling</th>
+</tr>
+</thead>
+<tbody>
+{% for bestelling in bestellingen %}
+<tr>
+<th scope="row"> {{bestelling.naamleverancier}} </th>
+<td>{{bestelling.bestelordernummer}}</td>
+<td>{{bestelling.artikelnummer}}</td>
+<td>€{{bestelling.hoeveelheidBestelling}}</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(bestellingen) }}
+</div>
+{% endblock %}

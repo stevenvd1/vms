@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * naamleverancier
  *
  * @ORM\Table(name="naamleverancier")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\naamleverancierRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\NaamLeverancierRepository")
  */
 class naamleverancier
 {

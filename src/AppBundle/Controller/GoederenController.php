@@ -137,7 +137,7 @@ class GoederenController extends Controller
 
        }
 
-
+/**
      * @Route("/goederen/ontvangengoederen", name="ontvangengoederen")
      */
     public function ontvangengoederen(Request $request)

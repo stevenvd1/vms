@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 //vul aan als je andere invoerveld-typen wilt gebruiken in je formulier
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,6 +26,13 @@ class Verwerkbestelling extends AbstractType
     $builder
             ->add('keuringseisen', IntegerType::class)
     ;
+    $builder->add('status', ChoiceType::class, array(
+        'choices'  => array(
+            'Besteld' => 0,
+            'Te ontvangen' => 1,
+            'Ontvangen' => 2,
+        ),
+    ));
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

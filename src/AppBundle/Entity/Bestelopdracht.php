@@ -84,6 +84,13 @@ class Bestelopdracht
      */
     private $keuringseisen;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
+
 
     /**
      * Get id
@@ -310,5 +317,30 @@ class Bestelopdracht
     {
         return $this->keuringseisen;
     }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Bestelopdracht
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
 
 }

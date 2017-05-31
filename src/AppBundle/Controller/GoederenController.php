@@ -28,7 +28,7 @@ class GoederenController extends Controller
    $em = $this->getDoctrine()->getManager();
    $em->persist($bestaandeArtikel);
    $em->flush();
-   return $this->redirect($this->generateurl("bestellingen"));
+   return $this->redirect($this->generateurl("teontvangen"));
    }
 
    return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));

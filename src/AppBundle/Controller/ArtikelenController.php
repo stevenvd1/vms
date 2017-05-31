@@ -135,26 +135,31 @@ class ArtikelenController extends Controller
 }
 
 /**
-    * @Route("/artikelen/zoek", name="artikel_zoek")
+    * @Route("/artikelen/zoek", name="zoekartikel")
     */
 
 
-public function searchAction(Request $request){
-
-  $data = $request->request->get('search');
-
+public function zoekartikel(Request $request)
+{
+    $artikelnr =$request->get('artikelnr');
 
   $em = $this->getDoctrine()->getManager();
+  if($artikelnr == null){
   $query = $em->createQuery(
-   'SELECT p FROM artikel:Suplier p
-   WHERE p.name LIKE :data')
-  ->setParameter('data',$data);
+   'SELECT a FROM AppBundle:Artikel');
+ }
+  else {
+    $query = $em-> createQuery(
+      'SELECT a
+      FROM AppBundle:Artikel a
+      WHERE a.artikelnr LIKE :input2'
+    );
+    $query->setParameter('input2', '%' . $artikelnr . '%');
+  }
+  $artikelen = $query ->getResult();
+  return new response($this->render('zoek.html.twig',
+    array ('artikelen' => $artikelen)));
 
-
-$res = $query->getResult();
-
-return $this->render('FooTransBundle:Default:search.html.twig', array(
-   'res' => $res));
-}
+  }
 
 }

@@ -65,6 +65,7 @@ class GoederenController extends Controller
       }
 
       /**
+
        * @Route("/goederen/bestellingen/verwerk/{bestelordernummer}", name="bestel_verwerk")
        */
       public function verwerkBestelling($bestelordernummer, Request $request) {
@@ -135,5 +136,23 @@ class GoederenController extends Controller
            ));
 
        }
+
+
+     * @Route("/goederen/ontvangengoederen", name="ontvangengoederen")
+     */
+    public function ontvangengoederen(Request $request)
+    {
+      $ontvangengoederen = new ontvangengoederen();
+      $form = $this->createForm(Ontvangengoederenformulier::class, $ontvangengoederen);
+
+
+    		$form->handleRequest($request);
+    		if ($form->isSubmitted() && $form->isValid()) {
+    			$em = $this->getDoctrine()->getManager();
+    			$em->persist($ontvangengoederen);
+    			$em->flush();
+        }
+  	return $this->redirect($this->generateurl("artikel_lijst"));
+    }
 
 }

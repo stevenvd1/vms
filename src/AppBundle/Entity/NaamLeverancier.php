@@ -13,12 +13,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class naamleverancier
 {
+
+
     /**
      * @var int
-     *
-     * @ORM\Column(name="Id", type="integer")
+     * @ORM\Column(name="Id", type="string", length=255, unique=true)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $Id;
 
@@ -26,14 +27,25 @@ class naamleverancier
      * @var string
      *
      * @ORM\Column(name="naam", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="naam", mappedBy="naamleverancier")
      */
+
     private $naam;
 
+
     /**
-     * @var string
-     * @ORM\OneToMany(targetEntity="bestelopdracht", mappedBy="naamleverancier")
+     * Set Id
+     *
+     * @param integer $Id
+     *
+     * @return naamleverancier
      */
-    private $bestelopdracht;
+    public function setId($Id)
+    {
+        $this->Id = $Id;
+
+        return $this;
+    }
 
     /**
      * Get Id
@@ -72,5 +84,16 @@ class naamleverancier
     public function __construct()
         {
             $this->producten = new ArrayCollection();
+        }
+      /**
+      * @return string
+      */
+        public function __toString()
+        {
+            try {
+                return (string) $this->naam;
+            } catch (Exception $exception) {
+                return '';
+            }
         }
 }

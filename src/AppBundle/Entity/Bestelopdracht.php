@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Bestelopdracht
 {
     /**
+
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,6 +21,14 @@ class Bestelopdracht
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    * @var int
+    * @ORM\Id
+    * @ORM\Column(name="naamleverancier", type="integer", length=255, unique=true)
+    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="naam")
+    */
+    private $naamleverancier;
+
 
     /**
      * @var int
@@ -163,7 +172,7 @@ class Bestelopdracht
     /**
      * Get artikelnummer
      *
-     * @return int
+     * @return string
      */
     public function getArtikelnummer()
     {
@@ -218,4 +227,3 @@ class Bestelopdracht
         return $this->aantal;
     }
 }
-

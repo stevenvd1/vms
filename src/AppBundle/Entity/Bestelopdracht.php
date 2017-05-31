@@ -24,6 +24,13 @@ class Bestelopdracht
     /**
      * @var int
      *
+     * @ORM\Column(name="zendingsnummer", type="integer")
+     */
+    private $zendingsnummer;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="bestelordernummer", type="integer")
      */
     private $bestelordernummer;
@@ -87,6 +94,30 @@ class Bestelopdracht
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set zendingsnummer
+     *
+     * @param integer $zendingsnummer
+     *
+     * @return Bestelopdracht
+     */
+    public function setZendingsnummer($zendingsnummer)
+    {
+        $this->zendingsnummer = $zendingsnummer;
+
+        return $this;
+    }
+
+    /**
+     * Get zendingsnummer
+     *
+     * @return int
+     */
+    public function getZendingsnummer()
+    {
+        return $this->zendingsnummer;
     }
 
     /**

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Bestelopdracht;
 use AppBundle\Entity\Artikel;
+use AppBundle\Entity\Leverancier;
 use AppBundle\Form\Type\Bestelopdrachtform;
 use AppBundle\Form\Type\Verwerkbestelling;
 
@@ -46,7 +47,7 @@ class GoederenController extends Controller
 
         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
 
-            
+
 
 
         /**

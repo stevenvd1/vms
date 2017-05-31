@@ -19,17 +19,10 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="string")
      * @ORM\Id
-<<<<<<< HEAD
+
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
-=======
-     * @Assert\Length(
-     *      min = 10,
-     *      max = 10,
-     *      exactMessage = "Het artikelnummer moet exact 10 cijfers zijn",
-     *
-     * )
-     * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
->>>>>>> 004f453733eb5def2e641fc597cf7c33f35ea334
+
+
      */
     private $artikelnr;
 

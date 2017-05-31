@@ -17,7 +17,7 @@ class GoederenController extends Controller
 {
 
   /**
-   * @Route("/goederen/bestelling/wijzig/{id}", name="artikel_wijzig")
+   * @Route("/goederen/bestelling/wijzig/{id}", name="bestelling_wijzig")
    */
   public function wijzigArtikel($id, Request $request) {
   $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);
@@ -28,7 +28,7 @@ class GoederenController extends Controller
    $em = $this->getDoctrine()->getManager();
    $em->persist($bestaandeArtikel);
    $em->flush();
-   return $this->redirect($this->generateurl("bestellingen"));
+   return $this->redirect($this->generateurl("teontvangen"));
    }
 
    return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));

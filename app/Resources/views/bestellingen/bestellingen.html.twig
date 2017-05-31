@@ -17,6 +17,8 @@
 </thead>
 <tbody>
 {% for bestelling in bestellingen %}
+{% if loop.index % 1 == 0 or loop.last %}
+{% if bestelling.status == 0 %}
 <tr>
 <th scope="row"> {{bestelling.bestelordernummer}} </th>
 <td>{{bestelling.bestelregel}}</td>
@@ -26,7 +28,8 @@
 <td>{{bestelling.aantal}}</td>
 <td><a href="bestelling/wijzig/{{ bestelling.id }}" class="btn btn-info">Verwerk</a></td>
 </tr>
-
+{% endif %}
+{% endif %}
 {% endfor %}
 </tbody>
 </table>

@@ -122,7 +122,11 @@ class Artikel
       //de betselserie kan maximaal 999999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $bestelserie;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer") */
+    private $status;
 
 
     /**
@@ -341,5 +345,29 @@ class Artikel
     public function getBestelserie()
     {
         return $this->bestelserie;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Artikel
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

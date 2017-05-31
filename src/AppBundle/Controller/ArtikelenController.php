@@ -172,6 +172,9 @@ return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array
 
 }
 
+/**
+* @Route("/zoek/zoekartikel", name="zoekartikel")
+*/
 public function zoekartikel(Request $request)
 {
     $artikelnr =$request->get('artikelnr');
@@ -220,5 +223,49 @@ public function verwijderdeArtikelen(Request $request)
     ));
 
 }
+/**
+ * @Route("/zoek/magazijnlocatie/", name="zoek")
+ */
+public function zoek(Request $request)
+{
+  $zoek = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
 
+    return $this->render('artikel/magazijnlocatie.html.twig', array(
+      'zoeken' => $zoek
+));
+}
+/**
+ * @Route("/zoek/magazijnlocatie/{artikelnr}", name="magazijnlocatie")
+ */
+ public function magazijnlocatie($artikelnr)
+ {
+   $artikel = $this->getDoctrine()->getRepository('AppBundle:Artikel')->find($artikelnr);
+
+     return $this->render('artikel/LocatieOpvragen.html.twig', array(
+       'artikel' => $artikel
+));
+}
+
+/**
+ * @Route("/zoek/voorraad/", name="zoekvoorraad")
+ */
+public function zoekvoorraad(Request $request)
+{
+  $zoekvoorraad = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
+
+    return $this->render('artikel/Voorraad.html.twig', array(
+      'zoeken' => $zoekvoorraad
+));
+}
+/**
+ * @Route("/zoek/voorraad/{artikelnr}", name="zoekvoorraadartikelnr")
+ */
+ public function zoekvoorraadartikelnr($artikelnr)
+ {
+   $artikel = $this->getDoctrine()->getRepository('AppBundle:Artikel')->find($artikelnr);
+
+     return $this->render('artikel/VoorraadArtikel.html.twig', array(
+       'artikel' => $artikel
+));
+}
 }

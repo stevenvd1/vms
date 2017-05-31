@@ -54,13 +54,10 @@
           <ul class="dropdown-menu">
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/">Artikel Overzicht</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/nieuw">Artikel Toevoegen</a></li>
-        {% if not is_granted('ROLE_USER') %}
-        {% elseif is_granted('ROLE_ADMIN') %}
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/wijzig">Artikel Wijzigen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/verwijder">Artikel Verwijderen</a></li>
-            <li><a href="http://localhost/vms/web/app_dev.php/zoekmagazijnlocatie">magazijnlocatie opvragen</a></li>
-        {% else %}
-        {% endif %}
+            <li><a href="http://localhost/vms/web/app_dev.php/zoek/magazijnlocatie/">Magazijnlocatie opvragen</a></li>
+
           </ul>
         </li>
         <li class="dropdown">
@@ -78,6 +75,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-equalizer"></span> Voorraad <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="http://localhost/vms/web/app_dev.php/artikel/minimumvoorraad">Minimumvoorraad</a></li>
+            <li><a href="http://localhost/vms/web/app_dev.php/zoek/voorraad">Voorraad opvragen</a></li>
             </ul>
 
 
@@ -85,8 +83,8 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://localhost/vms/web/app_dev.php/logout"><span class="glyphicon glyphicon-user"></span> Uitloggen</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Inloggen</a></li>
+        <li><a href="http://localhost/vms/web/app_dev.php/logout"><span class="glyphicon glyphicon-log-in"></span> Uitloggen</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Inloggen</a></li>
       </ul>
     </div>
   </div>

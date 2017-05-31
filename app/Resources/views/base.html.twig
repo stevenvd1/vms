@@ -54,8 +54,10 @@
           <ul class="dropdown-menu">
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/">Artikel Overzicht</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/nieuw">Artikel Toevoegen</a></li>
+{% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/wijzig">Artikel Wijzigen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/verwijder">Artikel Verwijderen</a></li>
+{% endif %}
 
           </ul>
         </li>

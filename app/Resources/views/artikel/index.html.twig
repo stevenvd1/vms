@@ -4,6 +4,8 @@
 <br>
 <h2 class="page-header">Artikelen overzicht</h2>
 <table class="table table-striped">
+
+
 <thead>
 <tr>
 <th>Artikelnummer</th>
@@ -34,6 +36,7 @@
 {% endfor %}
 </tbody>
 </table>
+<td><a class="btn btn-success" href="{{ path('verwijderde_artikelen') }}">Verwijderde Artikelen</a></td>
 
 <div class="navigation">
     {{ knp_pagination_render(artikelen) }}

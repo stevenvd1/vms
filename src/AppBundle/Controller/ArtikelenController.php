@@ -157,4 +157,31 @@ return $this->render('FooTransBundle:Default:search.html.twig', array(
    'res' => $res));
 }
 
+
+/**
+ * @Route("/artikelen/verwijderd", name="verwijderde_artikelen")
+ */
+public function verwijderdeArtikelen(Request $request)
+{
+
+  $Verwijderd = $this->getDoctrine()->getRepository('AppBundle:Verwijderd')->findAll();
+
+  /**
+  * @var $paginator \Knp\Component\Pager\Paginator
+  */
+  $paginator  = $this->get('knp_paginator');
+  $result = $paginator->paginate(
+      $Verwijderd,
+      $request->query->getInt('page', 1),
+      $request->query->getInt('limit', 10)
+    );
+
+    return $this->render('artikel/verwijderd.html.twig', array(
+      'verwijderd' => $result
+
+
+    ));
+
+}
+
 }

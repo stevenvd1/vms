@@ -166,10 +166,8 @@ Public function minimumvoorraad(Request $request){
 );
 $artikelen = $query->getResult();
 return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
-
-<<<<<<< HEAD
 }
-=======
+
 public function zoekartikel(Request $request)
 {
     $artikelnr =$request->get('artikelnr');
@@ -192,6 +190,7 @@ public function zoekartikel(Request $request)
     array ('artikelen' => $artikelen)));
 
   }
+
 
 
 /**
@@ -219,6 +218,4 @@ public function verwijderdeArtikelen(Request $request)
     ));
 
 }
-
->>>>>>> 7a892ccbcdc36b2a8daa4ed482348e5744128b12
 }

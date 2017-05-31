@@ -19,6 +19,9 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="string")
      * @ORM\Id
+<<<<<<< HEAD
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
+=======
      * @Assert\Length(
      *      min = 10,
      *      max = 10,
@@ -26,16 +29,16 @@ class Artikel
      *
      * )
      * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
+>>>>>>> 004f453733eb5def2e641fc597cf7c33f35ea334
      */
-     //de inkoopprijs kan maximaal uit 1000000000 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $artikelnr;
 
     /**
      * @var string
      *
      * @ORM\Column(name="naam", type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
      */
-     //de naam kan maximaal uit 255 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $naam;
 
     /**

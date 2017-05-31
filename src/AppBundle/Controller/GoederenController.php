@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Entity\Bestelling;
+use AppBundle\Entity\Bestelopdracht;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\Type\Bestelopdrachtform;
 use AppBundle\Form\Type\Verwerkbestelling;
@@ -22,7 +22,7 @@ class GoederenController extends Controller
      */
 
    public function nieuweBestelling(Request $request) {
-   $nieuweBestelling = new Bestelling();
+   $nieuweBestelling = new Bestelopdracht();
    $form = $this->createForm(Bestelopdrachtform::class, $nieuweBestelling);
 
    $form->handleRequest($request);
@@ -44,7 +44,10 @@ class GoederenController extends Controller
       public function alleBestellingen(Request $request)
       {
 
-        $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+        $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
+
+            
+
 
         /**
         * @var $paginator \Knp\Component\Pager\Paginator

@@ -13,6 +13,8 @@ use AppBundle\Form\Type\ArtikelWijzigFormulier;
 
 class ArtikelenController extends Controller
 {
+
+
   //dit comand geeft een overzicht van alle artikelen
     /**
      * @Route("/artikelen/", name="artikel_lijst")
@@ -32,8 +34,10 @@ class ArtikelenController extends Controller
           $request->query->getInt('limit', 10)
         );
 
+        
+
         return $this->render('artikel/index.html.twig', array(
-          'artikelen' => $result
+          'artikelen' => $result,
 
 
         ));
@@ -206,7 +210,7 @@ public function zoekartikel(Request $request)
 public function verwijderdeArtikelen(Request $request)
 {
 
-  $Verwijderd = $this->getDoctrine()->getRepository('AppBundle:Verwijderd')->findAll();
+  $Verwijderd = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findAll();
 
   /**
   * @var $paginator \Knp\Component\Pager\Paginator
@@ -219,7 +223,7 @@ public function verwijderdeArtikelen(Request $request)
     );
 
     return $this->render('artikel/verwijderd.html.twig', array(
-      'verwijderd' => $result
+      'bestellingen' => $result
     ));
 
 }

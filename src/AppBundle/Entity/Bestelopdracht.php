@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Bestelopdracht
@@ -87,7 +88,7 @@ class Bestelopdracht
     /**
      * @var string
      *
-     * @ORM\Column(name="datum", type="string", length=255)
+     * @ORM\Column(name="datum", type="string")
      */
     private $datum;
 

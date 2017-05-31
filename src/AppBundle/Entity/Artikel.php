@@ -19,10 +19,7 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="string")
      * @ORM\Id
-
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
-
-
      */
     private $artikelnr;
 

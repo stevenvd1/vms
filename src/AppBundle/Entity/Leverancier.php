@@ -26,9 +26,10 @@ class Leverancier
      * @var string
      *
      * @ORM\Column(name="naam", type="string")
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="leverancier")
      */
     private $naam;
-    
+
     /**
      * Get id
      *

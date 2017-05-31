@@ -47,9 +47,6 @@ class GoederenController extends Controller
 
         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
 
-
-
-
         /**
         * @var $paginator \Knp\Component\Pager\Paginator
         */

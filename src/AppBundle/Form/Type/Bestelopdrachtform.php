@@ -21,13 +21,23 @@ class Bestelopdrachtform extends AbstractType
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 $builder
-        ->add('bestelordernummer', IntegerType::class);
-
-$builder
-        ->add('bestelregel', IntegerType::class);
-$builder
-        ->add('leverancier', TextType::class)
+        ->add('bestelordernummer', IntegerType::class)
 ;
+$builder
+        ->add('bestelregel', IntegerType::class)
+;
+$builder
+        ->add('leverancier', EntityType::class, array(
+    // query choices from this entity
+    'class' => 'AppBundle:Bestelopdracht',
+
+    // use the User.username property as the visible option string
+    'choice_label' => 'leverancier',
+
+    // used to render a select box, check boxes or radios
+    // 'multiple' => true,
+    // 'expanded' => true,
+));
 $builder
         ->add('artikel', EntityType::class, array(
     // query choices from this entity

@@ -214,8 +214,6 @@ public function verwijderdeArtikelen(Request $request)
 
     return $this->render('artikel/verwijderd.html.twig', array(
       'verwijderd' => $result
-
-
     ));
 
 }

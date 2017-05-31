@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Bestelopdracht
 {
     /**
-
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -21,14 +20,6 @@ class Bestelopdracht
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    * @var int
-    * @ORM\Id
-    * @ORM\Column(name="naamleverancier", type="integer", length=255, unique=true)
-    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="naam")
-    */
-    private $naamleverancier;
-
 
     /**
      * @var int
@@ -52,11 +43,12 @@ class Bestelopdracht
     private $leverancier;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="artikelnummer", type="integer")
-     */
-    private $artikelnummer;
+   * @var int
+    *
+     * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelnr")
+     * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnr")
+      */
+    private $artikel;
 
     /**
      * @var string
@@ -71,6 +63,20 @@ class Bestelopdracht
      * @ORM\Column(name="aantal", type="integer")
      */
     private $aantal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="locatie", type="string", length=255)
+     */
+    private $locatie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keuringseisen", type="string", length=255)
+     */
+    private $keuringseisen;
 
 
     /**
@@ -162,9 +168,9 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setArtikelnummer($artikelnummer)
+    public function setArtikel($artikel)
     {
-        $this->artikelnummer = $artikelnummer;
+        $this->artikel = $artikel;
 
         return $this;
     }
@@ -172,11 +178,11 @@ class Bestelopdracht
     /**
      * Get artikelnummer
      *
-     * @return string
+     * @return int
      */
-    public function getArtikelnummer()
+    public function getArtikel()
     {
-        return $this->artikelnummer;
+        return $this->artikel;
     }
 
     /**
@@ -225,5 +231,53 @@ class Bestelopdracht
     public function getAantal()
     {
         return $this->aantal;
+    }
+
+    /**
+     * Set locatie
+     *
+     * @param string $locatie
+     *
+     * @return Bestelopdracht
+     */
+    public function setLocatie($locatie)
+    {
+        $this->locatie = $locatie;
+
+        return $this;
+    }
+
+    /**
+     * Get locatie
+     *
+     * @return string
+     */
+    public function getLocatie()
+    {
+        return $this->locatie;
+    }
+
+    /**
+     * Set keuringseisen
+     *
+     * @param string $keuringseisen
+     *
+     * @return Bestelopdracht
+     */
+    public function setKeuringseisen($keuringseisen)
+    {
+        $this->keuringseisen = $keuringseisen;
+
+        return $this;
+    }
+
+    /**
+     * Get keuringseisen
+     *
+     * @return string
+     */
+    public function getKeuringseisen()
+    {
+        return $this->keuringseisen;
     }
 }

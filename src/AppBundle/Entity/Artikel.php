@@ -21,33 +21,16 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\Id
-
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @Assert\Range(
-     * max = 1000000000)
-* @ORM\OneToMany(targetEntity="Bestelling", mappedBy="artikel")
-
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @Assert\Regex(
-     *    pattern = "/[A-Z]{2}\/[0-9]{10}+$/i",
-     *    match=true,
-     *    message="Ongeldige locatie [ERROR1]")
-     * @Assert\Regex(
-     *    pattern = "/^[0-9A-Za-z]+$/i",
-     *    match=false,
-     *    message="Ongeldige locatie [ERROR6]")
-     * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
-
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
      */
-     //de inkoopprijs kan maximaal uit 1000000000 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $artikelnr;
 
     /**
      * @var string
      *
      * @ORM\Column(name="naam", type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
      */
-     //de naam kan maximaal uit 255 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $naam;
 
     /**

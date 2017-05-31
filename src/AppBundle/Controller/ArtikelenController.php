@@ -154,7 +154,7 @@ class ArtikelenController extends Controller
 		return new Response($this->renderView('form.html.twig', array('form' => $form->createView())));
 	}
   /**
-* @Route("/artikel/minimumvoorraad", name="minimumvoorraadartike  len")
+* @Route("/artikel/minimumvoorraad", name="minimumvoorraadartikelen")
 */
 Public function minimumvoorraad(Request $request){
 	$em = $this->getDoctrine()->getManager();
@@ -166,6 +166,7 @@ Public function minimumvoorraad(Request $request){
 );
 $artikelen = $query->getResult();
 return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
+
 }
 
 public function zoekartikel(Request $request)
@@ -218,4 +219,5 @@ public function verwijderdeArtikelen(Request $request)
     ));
 
 }
+
 }

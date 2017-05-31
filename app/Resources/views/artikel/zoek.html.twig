@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<form method="post" action="{{ path('klantzoeken')}}">
+<form method="post" action="{{ path('zoekrtikel')}}">
     {{ form_widget(form) }}
     <input class="btn btn-default" type="submit">
     <a href="javascript:history.back()">Annuleren</a>
-    <input type="text" name="zoekwaarde" />
+    <input type="text" name="artikelnr" />
     <input type="submit" name="verzendknop" />
 </form>
 {% endblock %}

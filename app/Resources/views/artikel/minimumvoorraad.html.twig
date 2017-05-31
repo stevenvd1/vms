@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<h1>Overzicht Artikelen onder de minimumvoorraad</h1>
+	<ul>
+	{% for artikel in artikelen %}
+			<li style="color:darkgreen; float:left">
+				Artikelnummer: {{artikel.artikelnr}} <br>
+				Omschrijving: {{artikel.specs}} <br>
+				MinimumVoorraad: {{artikel.minVoorraad}} <br>
+				VoorraadInAantal: {{artikel.voorraad}} <br>
+				Bestelserie: {{artikel.bestelserie}} <br>
+				Magazijnlocatie: {{artikel.locatie}} <br>
+				Inkoopprijs: {{artikel.inkoopprijs}} <br>
+				Bestelserie: {{artikel.bestelserie}} <br>
+
+
+
+				<br>
+		</li>
+	{% endfor %}
+	<ul>
+{% endblock %}

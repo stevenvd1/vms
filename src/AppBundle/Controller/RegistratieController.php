@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class RegistratieController extends Controller
 {
-
+  //dit command geeft je de mogenlijkheid om jezelf te registreren.
   /**
    * @Route("/register/", name="register")
    */

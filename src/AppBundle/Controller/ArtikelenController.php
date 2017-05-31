@@ -13,6 +13,7 @@ use AppBundle\Form\Type\ArtikelWijzigFormulier;
 
 class ArtikelenController extends Controller
 {
+  //dit comand geeft een overzicht van alle artikelen
     /**
      * @Route("/artikelen/", name="artikel_lijst")
      */
@@ -38,7 +39,7 @@ class ArtikelenController extends Controller
         ));
 
     }
-
+//dit command geeft je de mogenlijkheid om een nieuw artikel in te voeren
     /**
      * @Route("/artikelen/nieuw", name="artikel_nieuw")
      */
@@ -60,7 +61,7 @@ class ArtikelenController extends Controller
     		return new Response($this->render('artikel/nieuw.html.twig', array('form' => $form->createView())));
 
     	}
-
+//dit command geeft je de mogenlijkheid om het artikelnummer te verwijderen
       /**
        * @Route("/artikelen/verwijder/{artikelnr}", name="artikel_verwijder")
        */
@@ -78,6 +79,7 @@ class ArtikelenController extends Controller
             );
       			return $this->redirect($this->generateurl("artikel_lijst"));
       		}
+          //dit command geeft je de mogenlijkheid om het artikel te verwijderen
           /**
            * @Route("/artikelen/verwijder/", name="verwijderart")
            */
@@ -89,7 +91,7 @@ class ArtikelenController extends Controller
                 'verwijderen' => $verwijder
           ));
           }
-
+//dit command geeft je de mogenlijkheid om een artikel te wijzigen
           /**
            * @Route("/artikelen/wijzig/", name="wijzigart")
            */
@@ -101,7 +103,7 @@ class ArtikelenController extends Controller
                 'wijzigen' => $wijzig
           ));
           }
-
+//dit command geeft je de mogenlijkheid om het artikelnummer te wijzigen.
     /**
      * @Route("/artikelen/wijzig/{artikelnr}", name="artikel_wijzig")
      */
@@ -121,7 +123,7 @@ class ArtikelenController extends Controller
 
 
      }
-
+//dit command geeft je de mogenlijkheid om details over een artikel te zien
     /**
      * @Route("/artikelen/detailles/{artikelnr}", name="artikel_detailles")
      */
@@ -134,7 +136,7 @@ class ArtikelenController extends Controller
 ));
 }
 
-
+//dit command geeft je de mogenlijkheid om een artikelnummer op te zoeken.
   /**
 	*@Route("/artikel/zoek/artikelnummer", name="artikel_zoek_artikelnummer")
 	*/
@@ -153,6 +155,7 @@ class ArtikelenController extends Controller
 
 		return new Response($this->renderView('form.html.twig', array('form' => $form->createView())));
 	}
+  //dit command geeft je de mogenlijkheid om de minumum voorraad van een artikel in te zien.
   /**
 * @Route("/artikel/minimumvoorraad", name="minimumvoorraadartikelen")
 */
@@ -169,6 +172,9 @@ return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array
 
 }
 
+/**
+* @Route("/zoek/zoekartikel", name="zoekartikel")
+*/
 public function zoekartikel(Request $request)
 {
     $artikelnr =$request->get('artikelnr');
@@ -193,7 +199,7 @@ public function zoekartikel(Request $request)
   }
 
 
-
+  //dit command geeft je de mogenlijkheid omverwijderde artikeln terug te zien.
 /**
  * @Route("/artikelen/verwijderd", name="verwijderde_artikelen")
  */
@@ -217,5 +223,49 @@ public function verwijderdeArtikelen(Request $request)
     ));
 
 }
+/**
+ * @Route("/zoek/magazijnlocatie/", name="zoek")
+ */
+public function zoek(Request $request)
+{
+  $zoek = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
 
+    return $this->render('artikel/magazijnlocatie.html.twig', array(
+      'zoeken' => $zoek
+));
+}
+/**
+ * @Route("/zoek/magazijnlocatie/{artikelnr}", name="magazijnlocatie")
+ */
+ public function magazijnlocatie($artikelnr)
+ {
+   $artikel = $this->getDoctrine()->getRepository('AppBundle:Artikel')->find($artikelnr);
+
+     return $this->render('artikel/LocatieOpvragen.html.twig', array(
+       'artikel' => $artikel
+));
+}
+
+/**
+ * @Route("/zoek/voorraad/", name="zoekvoorraad")
+ */
+public function zoekvoorraad(Request $request)
+{
+  $zoekvoorraad = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findall();
+
+    return $this->render('artikel/Voorraad.html.twig', array(
+      'zoeken' => $zoekvoorraad
+));
+}
+/**
+ * @Route("/zoek/voorraad/{artikelnr}", name="zoekvoorraadartikelnr")
+ */
+ public function zoekvoorraadartikelnr($artikelnr)
+ {
+   $artikel = $this->getDoctrine()->getRepository('AppBundle:Artikel')->find($artikelnr);
+
+     return $this->render('artikel/VoorraadArtikel.html.twig', array(
+       'artikel' => $artikel
+));
+}
 }

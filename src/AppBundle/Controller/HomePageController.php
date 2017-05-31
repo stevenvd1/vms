@@ -9,6 +9,7 @@ use AppBundle\Entity\Home;
 
 class DefaultController extends Controller
 {
+  //dit command geeft je de mogenlijkheid om naar de homepage te gaan.
     /**
      * @Route("/", name="homepage")
      */

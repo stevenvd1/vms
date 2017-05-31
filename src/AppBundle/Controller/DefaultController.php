@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+  //dit command geeft je de mogenlijkheid om naar de homepage te gaan.
     /**
      * @Route("/", name="homepage")
      */
@@ -18,7 +19,7 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
     }
-
+    //dit command geeft je de mogenlijkheid om naar het login scherm te gaan.
     /**
      * @Route("/logins/", name="login_lijst")
      */

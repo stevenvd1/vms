@@ -18,6 +18,11 @@ class Artikel
      * @ORM\Id
      * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      exactMessage = "Het artikelnummer moet minimaal uit 10 cijfers bestaan",
+     * )
      */
     private $artikelnr;
 
@@ -69,18 +74,12 @@ class Artikel
      * @var integer
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
-     * @Assert\Range(
-     *  max = 9999)
-     *      maxMessage = "You cannot be taller than {{ 9999 }}cm to enter"
-     *)
      */
-     //de inkoopprijs kan maximaal 5000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $inkoopprijs;
 
     /**
     * @var integer
     * @ORM\Column(name="verkoopprijs", type="decimal", precision=10, scale=2)
-    * )
     */
     private $verkoopprijs;
 

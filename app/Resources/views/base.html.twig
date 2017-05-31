@@ -54,14 +54,11 @@
           <ul class="dropdown-menu">
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/">Artikel Overzicht</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/nieuw">Artikel Toevoegen</a></li>
-{% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/wijzig">Artikel Wijzigen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/verwijder">Artikel Verwijderen</a></li>
-{% endif %}
 
           </ul>
         </li>
-
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Goederen <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -69,19 +66,18 @@
             <li><a href="http://localhost/vms/web/app_dev.php/goederen/bestellingen">Bestellingen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/goederen/bestellingen/te_ontvangen">Te ontvangen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/goederen/bestelopdracht">Ontvangen</a></li>
+            </ul>
 
-          </ul>
-        </li>
+
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-equalizer"></span> Voorraad <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="http://localhost/vms/web/app_dev.php/goederen/bestelopdracht">Ontvangen</a></li>
+            <li><a href="http://localhost/vms/web/app_dev.php/artikel/minimumvoorraad">Minimumvoorraad</a></li>
+            </ul>
 
 
-    </ul></li>
-
-          </ul>
-        </li>
+      </ul>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">

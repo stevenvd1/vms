@@ -4,8 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\Common\Collections\ArrayCollection;
-
 
 /**
  * Artikel
@@ -17,11 +15,21 @@ class Artikel
 {
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="artikelnr", type="integer")
+     * @ORM\Column(name="artikelnr", type="string")
      * @ORM\Id
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
+=======
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      exactMessage = "Het artikelnummer moet exact 10 cijfers zijn",
+     *
+     * )
+     * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
+>>>>>>> 004f453733eb5def2e641fc597cf7c33f35ea334
      */
     private $artikelnr;
 
@@ -46,27 +54,27 @@ class Artikel
      * @Assert\Regex(
      *    pattern = "/^20|[0-1]{1}[0-9]{1}\/[A-Z][0]{1}[0-9]{1}|10$/i",
      *    match=true,
-     *    message="Ongeldige locatie [ERROR1]")
+     *    message="De magazijnlocatie moet tussen de volgende waarde in liggen: 01/A01 - 20/Z10")
      * @Assert\Regex(
      *    pattern = "/^[2]{1}[1-9]{1}\/[A-Z]{1}[0-9]{1}$/i",
      *    match=false,
-     *    message="Ongeldige locatie [ERROR2]")
+     *    message="De eerste 2 cijfers van magzijnlocatie mag maximaal 20 zijn.")
      * @Assert\Regex(
      *    pattern = "/^[3-9]{1}[0-9]{1}\/[A-Z][0-9]{1}$/i",
      *    match=false,
-     *    message="Ongeldige locatie [ERROR3]")
+     *    message="De eerste 2 cijfers van magzijnlocatie mag maximaal 20 zijn.")
      * @Assert\Regex(
      *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][1]{1}[1-9]{1}$/i",
      *    match=false,
-     *    message="Ongeldige locatie [ERROR4]")
+     *    message="De laatste 2 cijfers van magzijnlocatie mag maximaal 10 zijn.")
      * @Assert\Regex(
      *    pattern = "/^[0-1]{1}[0-9]{1}\/[A-Z][2-9]{1}[0-9]{1}$/i",
      *    match=false,
-     *    message="Ongeldige locatie [ERROR5]")
+     *    message="De laatste 2 cijfers van magzijnlocatie mag maximaal 10 zijn.")
      * @Assert\Regex(
      *    pattern = "/^[0-9A-Za-z]+$/i",
      *    match=false,
-     *    message="Ongeldige locatie [ERROR6]")
+     *    message="De magazijnlocatie mag alleen uit letters en cijfers bestaan")
      */
      //de locatie kan maximaal uit 6 karakters bestaan en een bepaalde volgorde anders zal er een foutmelding opduiken.
     private $locatie;
@@ -75,8 +83,9 @@ class Artikel
      *
      * @ORM\Column(name="inkoopprijs", type="decimal", precision=10, scale=2)
      * @Assert\Range(
-     *  max = 5000)
-     *  message="Ongeldige inkoopprijs")
+     *  max = 9999)
+     *      maxMessage = "You cannot be taller than {{ 9999 }}cm to enter"
+     *)
      */
      //de inkoopprijs kan maximaal 5000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $inkoopprijs;
@@ -84,8 +93,7 @@ class Artikel
     /**
     * @var integer
     * @ORM\Column(name="verkoopprijs", type="decimal", precision=10, scale=2)
-    * @Assert\Range(
-    * max = 5000)
+    * )
     */
     private $verkoopprijs;
 
@@ -93,36 +101,39 @@ class Artikel
      * @var integer
      *
      * @ORM\Column(name="minVoorraad", type="integer", length=255)
-     * @Assert\Range(
-     *  max = 1000)
-     *  message="Ongeldige minimale voorraad")
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 6,
+     *      minMessage = "De minimale voorraad moet minimaal 0 zijn",
+     *      maxMessage = "De minimale voorraad mag maximaal uit 6 cijfers bestaan"
+     * )
      */
-     //de minimale voorraad kan maximaal 1000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
+     //de minimale voorraad kan maximaal 999999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $minVoorraad;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="voorraad", type="integer", length=6)
-     * @Assert\Range(
-     *  max = 2000)
-     *  message="Ongeldige voorraad")
+     * @Assert\Length(
+     *      max = 6,
+     *      maxMessage = "De voorraad mag maximaal uit 6 cijfers bestaan"
+     * )
      */
-      //de voorraad kan maximaal 2000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
+      //de voorraad kan maximaal 999999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $voorraad;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="bestelserie", type="integer", length=255)
-     * @Assert\Range(
-     *  max = 10000)
-     *  message="Ongeldige bestelserie")
+     * @Assert\Length(
+     *      max = 6,
+     *      maxMessage = "Ongeldige bestelserie"
+     * )
      */
-      //de betselserie kan maximaal 10000 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
+      //de betselserie kan maximaal 999999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $bestelserie;
-
-
 
 
 
@@ -130,7 +141,7 @@ class Artikel
     /**
      * Set artikelnr
      *
-     * @param integer $artikelnr
+     * @param string $artikelnr
      *
      * @return Artikel
      */
@@ -144,14 +155,12 @@ class Artikel
     /**
      * Get artikelnr
      *
-     * @return int
+     * @return string
      */
     public function getArtikelnr()
     {
         return $this->artikelnr;
     }
-
-
 
     /**
      * Set naam
@@ -291,7 +300,7 @@ class Artikel
     /**
      * Get minVoorraad
      *
-     * @return int
+     * @return integer
      */
     public function getMinVoorraad()
     {
@@ -346,7 +355,4 @@ class Artikel
     {
         return $this->bestelserie;
     }
-
-
-
 }

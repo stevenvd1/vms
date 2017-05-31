@@ -134,10 +134,40 @@ class ArtikelenController extends Controller
 ));
 }
 
-/**
-    * @Route("/artikelen/zoek", name="zoekartikel")
-    */
 
+  /**
+	*@Route("/artikel/zoek/artikelnummer", name="artikel_zoek_artikelnummer")
+	*/
+	public function zoekArtikelOpNummer(Request $request, $twig) {
+		$form = $this->createForm(ArtikelZoekArtikelnummerForm::class);
+
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {
+			$artikelnr = $form["artikelnr"]->getData();
+			$artikel = $this->getDoctrine()->getRepository('AppBundle:Artikel')->find($artikelnr);
+			$artikelen = array($artikel);
+
+			$twigFile = $twig . ".html.twig";
+			return new Response($this->renderView($twigFile, array('artikelen' =>$artikelen)));
+		}
+
+		return new Response($this->renderView('form.html.twig', array('form' => $form->createView())));
+	}
+  /**
+* @Route("/artikel/minimumvoorraad", name="minimumvoorraadartikelen")
+*/
+Public function minimumvoorraad(Request $request){
+	$em = $this->getDoctrine()->getManager();
+	$query = $em->createQuery(
+    'SELECT a
+    FROM AppBundle:Artikel a
+    WHERE a.minVoorraad > a.voorraad'
+
+);
+$artikelen = $query->getResult();
+return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
+
+}
 
 public function zoekartikel(Request $request)
 {
@@ -161,6 +191,7 @@ public function zoekartikel(Request $request)
     array ('artikelen' => $artikelen)));
 
   }
+
 
 
 /**

@@ -63,5 +63,4 @@ class Leverancier
     {
         return $this->naam;
     }
-
 }

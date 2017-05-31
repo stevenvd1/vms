@@ -12,21 +12,35 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bestelopdracht
 {
-
     /**
-    * @var int
-    * @ORM\Id
-    * @ORM\Column(name="naamleverancier", type="integer", unique=true)
-    * @ORM\ManyToOne(targetEntity="naamleverancier", inversedBy="Bestelopdracht")
-    */
-    private $naamleverancier;
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="bestelordernummer", type="integer", unique=true)
+     * @ORM\Column(name="bestelordernummer", type="integer")
      */
     private $bestelordernummer;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="bestelregel", type="integer")
+     */
+    private $bestelregel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="leverancier", type="string", length=255)
+     */
+    private $leverancier;
 
     /**
      * @var int
@@ -35,37 +49,29 @@ class Bestelopdracht
      */
     private $artikelnummer;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="beschrijving", type="string", length=255)
+     */
+    private $beschrijving;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="hoeveelheidBestelling", type="integer")
+     * @ORM\Column(name="aantal", type="integer")
      */
-    private $hoeveelheidBestelling;
+    private $aantal;
 
 
     /**
-     * Set naamleverancier
-     *
-     * @param integer $naamleverancier
-     *
-     * @return Bestelopdracht
-     */
-    public function setnaamleverancier($naamleverancier)
-    {
-        $this->naamleverancier = $naamleverancier;
-
-        return $this;
-    }
-
-    /**
-     * Get naamleverancier
+     * Get id
      *
      * @return int
      */
-    public function getnaamleverancier()
+    public function getId()
     {
-        return $this->naamleverancier;
+        return $this->id;
     }
 
     /**
@@ -75,7 +81,7 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setbestelordernummer($bestelordernummer)
+    public function setBestelordernummer($bestelordernummer)
     {
         $this->bestelordernummer = $bestelordernummer;
 
@@ -87,9 +93,57 @@ class Bestelopdracht
      *
      * @return int
      */
-    public function getbestelordernummer()
+    public function getBestelordernummer()
     {
         return $this->bestelordernummer;
+    }
+
+    /**
+     * Set bestelregel
+     *
+     * @param integer $bestelregel
+     *
+     * @return Bestelopdracht
+     */
+    public function setBestelregel($bestelregel)
+    {
+        $this->bestelregel = $bestelregel;
+
+        return $this;
+    }
+
+    /**
+     * Get bestelregel
+     *
+     * @return int
+     */
+    public function getBestelregel()
+    {
+        return $this->bestelregel;
+    }
+
+    /**
+     * Set leverancier
+     *
+     * @param string $leverancier
+     *
+     * @return Bestelopdracht
+     */
+    public function setLeverancier($leverancier)
+    {
+        $this->leverancier = $leverancier;
+
+        return $this;
+    }
+
+    /**
+     * Get leverancier
+     *
+     * @return string
+     */
+    public function getLeverancier()
+    {
+        return $this->leverancier;
     }
 
     /**
@@ -99,7 +153,7 @@ class Bestelopdracht
      *
      * @return Bestelopdracht
      */
-    public function setartikelnummer($artikelnummer)
+    public function setArtikelnummer($artikelnummer)
     {
         $this->artikelnummer = $artikelnummer;
 
@@ -111,33 +165,57 @@ class Bestelopdracht
      *
      * @return int
      */
-    public function getartikelnummer()
+    public function getArtikelnummer()
     {
         return $this->artikelnummer;
     }
 
-
     /**
-     * Set hoeveelheidBestelling
+     * Set beschrijving
      *
-     * @param integer $hoeveelheidBestelling
+     * @param string $beschrijving
      *
      * @return Bestelopdracht
      */
-    public function sethoeveelheidBestelling($hoeveelheidBestelling)
+    public function setBeschrijving($beschrijving)
     {
-        $this->hoeveelheidBestelling = $hoeveelheidBestelling;
+        $this->beschrijving = $beschrijving;
 
         return $this;
     }
 
     /**
-     * Get hoeveelheidBestelling
+     * Get beschrijving
+     *
+     * @return string
+     */
+    public function getBeschrijving()
+    {
+        return $this->beschrijving;
+    }
+
+    /**
+     * Set aantal
+     *
+     * @param integer $aantal
+     *
+     * @return Bestelopdracht
+     */
+    public function setAantal($aantal)
+    {
+        $this->aantal = $aantal;
+
+        return $this;
+    }
+
+    /**
+     * Get aantal
      *
      * @return int
      */
-    public function gethoeveelheidBestelling()
+    public function getAantal()
     {
-        return $this->hoeveelheidBestelling;
+        return $this->aantal;
     }
 }
+

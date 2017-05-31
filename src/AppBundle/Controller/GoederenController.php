@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Bestelling;
+use AppBundle\Entity\Artikel;
 use AppBundle\Form\Type\Bestelopdrachtform;
 use AppBundle\Form\Type\Verwerkbestelling;
 
@@ -19,31 +20,23 @@ class GoederenController extends Controller
    /**
      * @Route("/goederen/bestelopdracht", name="bestelopdracht_nieuw")
      */
-    public function nieuweBestelling(Request $request)
-    {
-      $nieuweBestelling = new Bestelling();
-      $form = $this->createForm(Bestelopdrachtform::class, $nieuweBestelling);
+
+   public function nieuweBestelling(Request $request) {
+   $nieuweBestelling = new Bestelling();
+   $form = $this->createForm(Bestelopdrachtform::class, $nieuweBestelling);
+
+   $form->handleRequest($request);
+   if ($form->isSubmitted() && $form->isValid()) {
+     $em = $this->getDoctrine()->getManager();
+     $em->persist($nieuweBestelling);
+     $em->flush();
+     return $this->redirect($this->generateurl("bestellingen"));
+   }
 
 
-    		$form->handleRequest($request);
-    		if ($form->isSubmitted() && $form->isValid()) {
-    			$em = $this->getDoctrine()->getManager();
-    			$em->persist($nieuweBestelling);
-    			$em->flush();
+   return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
-          $this->addFlash(
-              'toegevoegd',
-              'Bestelopdracht Toegevoegd'
-            );
-
-    			return $this->redirect($this->generateurl("bestellingen"));
-    		}
-
-
-
-    		return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
-
-    	}
+ }
 
       /**
        * @Route("goederen/bestellingen", name="bestellingen")

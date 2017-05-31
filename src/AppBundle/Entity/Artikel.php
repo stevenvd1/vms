@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Artikel
@@ -22,7 +24,7 @@ class Artikel
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Assert\Range(
      * max = 1000000000)
-     * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
+* @ORM\OneToMany(targetEntity="Bestelling", mappedBy="artikel")
      */
     private $artikelnr;
 
@@ -108,6 +110,8 @@ class Artikel
 
 
 
+
+
     /**
      * Set artikelnr
      *
@@ -131,6 +135,8 @@ class Artikel
     {
         return $this->artikelnr;
     }
+
+
 
     /**
      * Set naam
@@ -231,7 +237,7 @@ class Artikel
       /**
      * Set minVoorraad
      *
-     * @param string $minVoorraad
+     * @param integer $minVoorraad
      *
      * @return Artikel
      */
@@ -245,7 +251,7 @@ class Artikel
     /**
      * Get minVoorraad
      *
-     * @return string
+     * @return int
      */
     public function getMinVoorraad()
     {
@@ -300,4 +306,7 @@ class Artikel
     {
         return $this->bestelserie;
     }
+
+
+
 }

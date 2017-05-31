@@ -4,6 +4,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Artikel
@@ -19,10 +21,23 @@ class Artikel
      *
      * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\Id
+
      * @ORM\GeneratedValue(strategy="AUTO")
      * @Assert\Range(
      * max = 1000000000)
+* @ORM\OneToMany(targetEntity="Bestelling", mappedBy="artikel")
+
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @Assert\Regex(
+     *    pattern = "/[A-Z]{2}\/[0-9]{10}+$/i",
+     *    match=true,
+     *    message="Ongeldige locatie [ERROR1]")
+     * @Assert\Regex(
+     *    pattern = "/^[0-9A-Za-z]+$/i",
+     *    match=false,
+     *    message="Ongeldige locatie [ERROR6]")
      * @ORM\OneToMany(targetEntity="Ontvangengoederen", mappedBy="artikel")
+
      */
      //de inkoopprijs kan maximaal uit 1000000000 karakters bestaan en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $artikelnr;
@@ -127,6 +142,8 @@ class Artikel
 
 
 
+
+
     /**
      * Set artikelnr
      *
@@ -150,6 +167,8 @@ class Artikel
     {
         return $this->artikelnr;
     }
+
+
 
     /**
      * Set naam
@@ -275,7 +294,7 @@ class Artikel
       /**
      * Set minVoorraad
      *
-     * @param string $minVoorraad
+     * @param integer $minVoorraad
      *
      * @return Artikel
      */
@@ -289,7 +308,7 @@ class Artikel
     /**
      * Get minVoorraad
      *
-     * @return string
+     * @return int
      */
     public function getMinVoorraad()
     {
@@ -344,4 +363,7 @@ class Artikel
     {
         return $this->bestelserie;
     }
+
+
+
 }

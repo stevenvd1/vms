@@ -6,19 +6,21 @@
 <table class="table table-striped">
 <thead>
 <tr>
-<th>naamleverancier</th>
-<th>bestelordernummer</th>
-<th>artikelnummer</th>
-<th>hoeveelheidBestelling</th>
+<th>Leverancier</th>
+<th>Bestelordernummer</th>
+<th>Artikelnummer</th>
+<th>Aantal</th>
+<th>Acties</th>
 </tr>
 </thead>
 <tbody>
 {% for bestelling in bestellingen %}
 <tr>
-<th scope="row"> {{bestelling.naamleverancier}} </th>
+<th scope="row"> {{bestelling.leverancier}} </th>
 <td>{{bestelling.bestelordernummer}}</td>
-<td>{{bestelling.artikelnummer}}</td>
-<td>€{{bestelling.hoeveelheidBestelling}}</td>
+<td>{{bestelling.artikel.artikelnr}}</td>
+<td>€{{bestelling.aantal}}</td>
+<td><a href="bestellingen/verwerk/{{ bestelling.bestelordernummer }}" class="btn btn-info">Verwerk</a></td>
 </tr>
 
 {% endfor %}

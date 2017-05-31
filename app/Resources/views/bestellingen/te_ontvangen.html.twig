@@ -1,0 +1,42 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<h2 class="page-header">Te ontvangen</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Zendingsnummer</th>
+<th>Bestelordernummer</th>
+<th>Leveranciersnaam</th>
+<th>Artikelnummer</th>
+<th>Artikelnaam</th>
+<th>Aantal</th>
+<th>Locatie</th>
+<th>Keuringseisen</th>
+</tr>
+</thead>
+<tbody>
+{% for bestelling in bestellingen %}
+<tr>
+<th scope="row"> {{bestelling.zendingsnummer}} </th>
+<td>{{bestelling.bestelordernummer}}</td>
+<td>{{bestelling.leverancier}}</td>
+<td>{{bestelling.artikel.artikelnr}}</td>
+<td>{{bestelling.artikelnaam}}</td>
+<td>{{bestelling.aantal}}</td>
+<td>{{bestelling.locatie}}</td>
+<td>{{bestelling.keuringseisen}}</td>
+<td><a href="bestellingen/verwerk/{{ bestelling.bestelordernummer }}" class="btn btn-info">Verwerk</a></td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(bestellingen) }}
+</div>
+{% endblock %}

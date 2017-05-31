@@ -28,8 +28,10 @@ class Ontvangengoederenformulier extends AbstractType
     $builder
 
                 ->add('Datum', DateType::class, array(
-    'widget' => 'single_text',
-  ));
+                  'html5' => false,
+                  'attr' => ['class' => 'js-datepicker'],
+              ));
+
 $builder
         ->add('hoeveelheid', TextType::class);
 $builder

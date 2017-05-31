@@ -19,22 +19,12 @@ class Verwerkbestelling extends AbstractType
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
-$builder
-        ->add('leverancier', TextType::class);
-$builder
-        ->add('bestelordernummer', IntegerType::class);
-$builder
-        ->add('artikelnummer', IntegerType::class);
-$builder
-        ->add('aantal', IntegerType::class);
-        $builder
-                ->add('zendingsnummer', IntegerType::class);
-                $builder
-                        ->add('artikelnaam', TextType::class);
-                        $builder
-                                ->add('locatie', TextType::class);
-                                $builder
-                                        ->add('keuringseisen', IntegerType::class);
+    $builder
+            ->add('bestelordernummer', IntegerType::class)
+    ;
+    $builder
+            ->add('bestelregel', IntegerType::class)
+    ;
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer
@@ -43,7 +33,7 @@ $builder
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => 'AppBundle\Entity\Bestelling', //Entiteit vervangen door b.v. Klant
+			'data_class' => 'AppBundle\Entity\Bestelopdracht', //Entiteit vervangen door b.v. Klant
 		));
 	}
 }

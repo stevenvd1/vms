@@ -16,6 +16,26 @@ use AppBundle\Form\Type\Verwerkbestelling;
 class GoederenController extends Controller
 {
 
+  /**
+   * @Route("/goederen/bestelling/wijzig/{id}", name="artikel_wijzig")
+   */
+  public function wijzigArtikel($id, Request $request) {
+  $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);
+   $form = $this->createForm(Verwerkbestelling::class, $bestaandeArtikel);
+
+   $form->handleRequest($request);
+   if ($form->isSubmitted() && $form->isValid()) {
+   $em = $this->getDoctrine()->getManager();
+   $em->persist($bestaandeArtikel);
+   $em->flush();
+   return $this->redirect($this->generateurl("bestellingen"));
+   }
+
+   return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));
+
+
+   }
+
 
 
    /**
@@ -65,26 +85,7 @@ class GoederenController extends Controller
 
       }
 
-      /**
 
-       * @Route("/goederen/bestellingen/verwerk/{bestelordernummer}", name="bestel_verwerk")
-       */
-      public function verwerkBestelling($bestelordernummer, Request $request) {
-      $bestaandeBestelling = $this->getDoctrine()->getRepository("AppBundle:Bestelling")->find($bestelordernummer);
-       $form = $this->createForm(Verwerkbestelling::class, $bestaandeBestelling);
-
-       $form->handleRequest($request);
-       if ($form->isSubmitted() && $form->isValid()) {
-       $em = $this->getDoctrine()->getManager();
-       $em->persist($bestaandeBestelling);
-       $em->flush();
-       return $this->redirect($this->generateurl("teontvangen"));
-       }
-
-       return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));
-
-
-       }
 
        /**
         * @Route("goederen/bestellingen/te_ontvangen", name="teontvangen")
@@ -92,7 +93,7 @@ class GoederenController extends Controller
        public function teOntvangen(Request $request)
        {
 
-         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
 
          /**
          * @var $paginator \Knp\Component\Pager\Paginator
@@ -118,7 +119,7 @@ class GoederenController extends Controller
        public function Ontvangen(Request $request)
        {
 
-         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelling')->findAll();
+         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
 
          /**
          * @var $paginator \Knp\Component\Pager\Paginator

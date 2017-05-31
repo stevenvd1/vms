@@ -15,10 +15,8 @@ class Artikel
 {
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="artikelnr", type="string")
      * @ORM\Id
+     * @ORM\Column(name="artikelnr", type="integer")
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
      */
     private $artikelnr;
@@ -26,8 +24,7 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="naam", type="string", length=255, nullable=true)
-     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="artikel")
+     * @ORM\Column(name="naam", type="string", length=255)
      */
     private $naam;
 
@@ -131,7 +128,7 @@ class Artikel
     /**
      * Set artikelnr
      *
-     * @param string $artikelnr
+     * @param integer $artikelnr
      *
      * @return Artikel
      */
@@ -145,7 +142,7 @@ class Artikel
     /**
      * Get artikelnr
      *
-     * @return string
+     * @return int
      */
     public function getArtikelnr()
     {

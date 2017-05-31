@@ -27,17 +27,7 @@ $builder
         ->add('bestelregel', IntegerType::class)
 ;
 $builder
-        ->add('leverancier', EntityType::class, array(
-    // query choices from this entity
-    'class' => 'AppBundle:Bestelopdracht',
-
-    // use the User.username property as the visible option string
-    'choice_label' => 'leverancier',
-
-    // used to render a select box, check boxes or radios
-    // 'multiple' => true,
-    // 'expanded' => true,
-));
+        ->add('leverancier', TextType::class);
 $builder
         ->add('artikel', EntityType::class, array(
     // query choices from this entity

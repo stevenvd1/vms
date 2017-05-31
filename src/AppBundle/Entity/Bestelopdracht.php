@@ -50,9 +50,7 @@ class Bestelopdracht
      */
     private $leverancier;
 
-    /**
-   * @var int
-    *
+  /**
      * @ORM\ManyToOne(targetEntity="Artikel", inversedBy="artikelnr")
      * @ORM\JoinColumn(name="artikelnummer", referencedColumnName="artikelnr")
       */
@@ -312,5 +310,5 @@ class Bestelopdracht
     {
         return $this->keuringseisen;
     }
-    
+
 }

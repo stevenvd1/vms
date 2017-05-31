@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 //EntiteitType vervangen door b.v. KlantType
 class ArtikelWijzigFormulier extends AbstractType
@@ -42,6 +43,12 @@ $builder
 $builder
         ->add('bestelserie', IntegerType::class)
 ;
+$builder->add('status', ChoiceType::class, array(
+    'choices'  => array(
+        'Actief' => 0,
+        'Inactief' => 1,
+    ),
+));
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

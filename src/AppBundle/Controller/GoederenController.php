@@ -17,7 +17,7 @@ class GoederenController extends Controller
 {
 
   /**
-   * @Route("/goederen/bestelling/wijzig/{id}", name="artikel_wijzig")
+   * @Route("/goederen/bestelling/wijzig/{id}", name="bestelling_wijzig")
    */
   public function wijzigArtikel($id, Request $request) {
   $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);

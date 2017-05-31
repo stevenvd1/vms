@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Verwijderd
  *
- * @ORM\Table(name="verwijderd")
+ * @ORM\Table(name="artikel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArtikelRepository")
  */
 class Verwijderd

@@ -21,6 +21,8 @@
 </thead>
 <tbody>
 {% for artikel in artikelen %}
+{% if loop.index % 1 == 0 or loop.last %}
+{% if artikel.status == 0 %}
 <tr>
 <th scope="row"> {{artikel.artikelnr}} </th>
 <td>{{artikel.naam}}</td>
@@ -33,6 +35,8 @@
 <td>{{artikel.bestelserie}}</td>
 </tr>
 
+{% endif %}
+{% endif %}
 {% endfor %}
 </tbody>
 </table>

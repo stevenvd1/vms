@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<h2 class="page-header">Verwijderde artikelen overzicht</h2>
+<table class="table table-striped">
+
+
+<thead>
+<tr>
+<th>Artikelnummer</th>
+<th>Naam</th>
+<th>Technische Specificaties</th>
+<th>Magazijnlocatie</th>
+<th>Inkoopprijs</th>
+<th>Verkoopprijs</th>
+<th>Minimale voorraad</th>
+<th>Voorraad</th>
+<th>Bestelserie</th>
+</tr>
+</thead>
+<tbody>
+{% for verwijder in verwijderd %}
+<tr>
+<th scope="row"> {{verwijder.artikelnr}} </th>
+<td>{{verwijder.naam}}</td>
+<td>{{verwijder.specs}}</td>
+<td>{{verwijder.locatie}}</td>
+<td>€{{verwijder.inkoopprijs}},-</td>
+<td>€{{verwijder.verkoopprijs}},-</td>
+<td>{{verwijder.MinVoorraad}}</td>
+<td>{{verwijder.Voorraad}}</td>
+<td>{{verwijder.bestelserie}}</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(verwijderd) }}
+</div>
+{% endblock %}

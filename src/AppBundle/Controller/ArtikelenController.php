@@ -167,5 +167,58 @@ Public function minimumvoorraad(Request $request){
 $artikelen = $query->getResult();
 return new Response($this->renderView('artikel/minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
 
+<<<<<<< HEAD
 }
+=======
+public function zoekartikel(Request $request)
+{
+    $artikelnr =$request->get('artikelnr');
+
+  $em = $this->getDoctrine()->getManager();
+  if($artikelnr == null){
+  $query = $em->createQuery(
+   'SELECT a FROM AppBundle:Artikel');
+ }
+  else {
+    $query = $em-> createQuery(
+      'SELECT a
+      FROM AppBundle:Artikel a
+      WHERE a.artikelnr LIKE :input2'
+    );
+    $query->setParameter('input2', '%' . $artikelnr . '%');
+  }
+  $artikelen = $query ->getResult();
+  return new response($this->render('zoek.html.twig',
+    array ('artikelen' => $artikelen)));
+
+  }
+
+
+/**
+ * @Route("/artikelen/verwijderd", name="verwijderde_artikelen")
+ */
+public function verwijderdeArtikelen(Request $request)
+{
+
+  $Verwijderd = $this->getDoctrine()->getRepository('AppBundle:Verwijderd')->findAll();
+
+  /**
+  * @var $paginator \Knp\Component\Pager\Paginator
+  */
+  $paginator  = $this->get('knp_paginator');
+  $result = $paginator->paginate(
+      $Verwijderd,
+      $request->query->getInt('page', 1),
+      $request->query->getInt('limit', 10)
+    );
+
+    return $this->render('artikel/verwijderd.html.twig', array(
+      'verwijderd' => $result
+
+
+    ));
+
+}
+
+>>>>>>> 7a892ccbcdc36b2a8daa4ed482348e5744128b12
 }

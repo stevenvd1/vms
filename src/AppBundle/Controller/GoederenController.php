@@ -60,7 +60,7 @@ class GoederenController extends Controller
     }
 
     /**
-     * @Route("/goederen/bestelling/afkeuren/{id}", name="bestelling_verwerk")
+     * @Route("/goederen/bestelling/afkeuren/{id}", name="bestelling_afkeuren")
      */
     public function afkeurenBestelling($id, Request $request) {
     $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);

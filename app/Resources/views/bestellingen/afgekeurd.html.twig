@@ -1,37 +1,30 @@
-
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 <br>
-<h2 class="page-header">Te ontvangen</h2>
+<h2 class="page-header">Overzicht afkeuringen</h2>
 <table class="table table-striped">
 <thead>
 <tr>
-<th>Zendingsnummer</th>
 <th>Bestelordernummer</th>
-<th>Leveranciersnaam</th>
+<th>Bestelregel</th>
 <th>Artikelnummer</th>
 <th>Artikelnaam</th>
-<th>Aantal</th>
-<th>Locatie</th>
-<th>Keuringseisen</th>
+<th>Hoeveelheid</th>
+
 </tr>
 </thead>
 <tbody>
 {% for bestelling in bestellingen %}
 {% if loop.index % 1 == 0 or loop.last %}
-{% if bestelling.status == 1 %}
+{% if bestelling.status == 3 %}
 <tr>
-<th scope="row"> {{bestelling.zendingsnummer}} </th>
-<td scope="row">{{bestelling.bestelordernummer}}</td>
-<td>{{bestelling.leverancier}}</td>
+<td scope="row"> {{bestelling.bestelordernummer}} </td>
+<td>{{bestelling.bestelregel}}</td>
 <td>{{bestelling.artikel.artikelnr}}</td>
 <td>{{bestelling.artikel.naam}}</td>
 <td>{{bestelling.aantal}}</td>
-<td>{{bestelling.artikel.locatie}}</td>
-<td>{{bestelling.keuringseisen}}</td>
-<td><a href="../bestelling/verwerk/{{ bestelling.id }}" class="btn btn-info">Verwerk</a></td>
 </tr>
 {% endif %}
 {% endif %}

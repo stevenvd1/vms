@@ -4,7 +4,7 @@
 
 {% block body %}
 <br>
-<h2 class="page-header">Te ontvangen</h2>
+<h2 class="page-header">Ontvangen</h2>
 <table class="table table-striped">
 <thead>
 <tr>
@@ -14,22 +14,23 @@
 <th>Naam</th>
 <th>Aantal</th>
 <th>Kwaliteit</th>
-<th>Notities</th>
 </tr>
 </thead>
 <tbody>
 {% for bestelling in bestellingen %}
+{% if loop.index % 1 == 0 or loop.last %}
+{% if bestelling.status == 2 %}
 <tr>
 <th scope="row"> {{bestelling.datum}} </th>
 <td>{{bestelling.leverancier}}</td>
-<td>{{bestelling.artikelnummer}}</td>
-<td>{{bestelling.artikelnaam}}</td>
+<td>{{bestelling.artikel.artikelnr}}</td>
+<td>{{bestelling.artikel.naam}}</td>
 <td>{{bestelling.aantal}}</td>
 <td>{{bestelling.kwaliteit}}</td>
-<td>{{bestelling.notities}}</td>
-<td><a href="bestellingen/verwerk/{{ bestelling.bestelordernummer }}" class="btn btn-info">Verwerk</a></td>
+<td><a href="http://localhost/vms/web/app_dev.php/goederen/bestelling/afkeuren/{{ bestelling.id }}" class="btn btn-danger">Afkeuren</a></td>
 </tr>
-
+{% endif %}
+{% endif %}
 {% endfor %}
 </tbody>
 </table>

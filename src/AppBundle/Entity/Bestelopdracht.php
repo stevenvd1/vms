@@ -85,6 +85,20 @@ class Bestelopdracht
     private $keuringseisen;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="datum", type="string", length=255)
+     */
+    private $datum;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kwaliteit", type="string", length=255)
+     */
+    private $kwaliteit;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer")
@@ -316,6 +330,54 @@ class Bestelopdracht
     public function getKeuringseisen()
     {
         return $this->keuringseisen;
+    }
+
+    /**
+     * Set datum
+     *
+     * @param string $datum
+     *
+     * @return Bestelopdracht
+     */
+    public function setDatum($datum)
+    {
+        $this->datum = $datum;
+
+        return $this;
+    }
+
+    /**
+     * Get datum
+     *
+     * @return string
+     */
+    public function getDatum()
+    {
+        return $this->datum;
+    }
+
+    /**
+     * Set kwaliteit
+     *
+     * @param string $kwaliteit
+     *
+     * @return Bestelopdracht
+     */
+    public function setKwaliteit($kwaliteit)
+    {
+        $this->kwaliteit = $kwaliteit;
+
+        return $this;
+    }
+
+    /**
+     * Get kwaliteit
+     *
+     * @return string
+     */
+    public function getKwaliteit()
+    {
+        return $this->kwaliteit;
     }
 
     /**

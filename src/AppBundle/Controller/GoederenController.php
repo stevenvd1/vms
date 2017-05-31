@@ -12,6 +12,8 @@ use AppBundle\Entity\Artikel;
 use AppBundle\Entity\Leverancier;
 use AppBundle\Form\Type\Bestelopdrachtform;
 use AppBundle\Form\Type\Verwerkbestelling;
+use AppBundle\Form\Type\Ontvangenform;
+use AppBundle\Form\Type\Afkeurenform;
 
 class GoederenController extends Controller
 {
@@ -19,7 +21,7 @@ class GoederenController extends Controller
   /**
    * @Route("/goederen/bestelling/wijzig/{id}", name="bestelling_wijzig")
    */
-  public function wijzigArtikel($id, Request $request) {
+  public function wijzigBestelling($id, Request $request) {
   $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);
    $form = $this->createForm(Verwerkbestelling::class, $bestaandeArtikel);
 
@@ -36,6 +38,45 @@ class GoederenController extends Controller
 
    }
 
+   /**
+    * @Route("/goederen/bestelling/verwerk/{id}", name="bestelling_verwerk")
+    */
+   public function verwerkBestelling($id, Request $request) {
+   $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);
+    $form = $this->createForm(Ontvangenform::class, $bestaandeArtikel);
+
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($bestaandeArtikel);
+    $em->flush();
+    return $this->redirect($this->generateurl("ontvangen"));
+    }
+
+    return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));
+
+
+    }
+
+    /**
+     * @Route("/goederen/bestelling/afkeuren/{id}", name="bestelling_verwerk")
+     */
+    public function afkeurenBestelling($id, Request $request) {
+    $bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->find($id);
+     $form = $this->createForm(Afkeurenform::class, $bestaandeArtikel);
+
+     $form->handleRequest($request);
+     if ($form->isSubmitted() && $form->isValid()) {
+     $em = $this->getDoctrine()->getManager();
+     $em->persist($bestaandeArtikel);
+     $em->flush();
+     return $this->redirect($this->generateurl("ontvangen"));
+     }
+
+     return new Response($this->render('bestellingen/verwerk.html.twig', array('form' => $form->createView())));
+
+
+     }
 
 
    /**
@@ -106,6 +147,32 @@ class GoederenController extends Controller
            );
 
            return $this->render('bestellingen/te_ontvangen.html.twig', array(
+             'bestellingen' => $result
+
+
+           ));
+
+       }
+
+       /**
+        * @Route("goederen/bestellingen/afgekeurd", name="afgekeurd")
+        */
+       public function Afkeuren(Request $request)
+       {
+
+         $bestellingen = $this->getDoctrine()->getRepository('AppBundle:Bestelopdracht')->findAll();
+
+         /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+         $paginator  = $this->get('knp_paginator');
+         $result = $paginator->paginate(
+             $bestellingen,
+             $request->query->getInt('page', 1),
+             $request->query->getInt('limit', 10)
+           );
+
+           return $this->render('bestellingen/afgekeurd.html.twig', array(
              'bestellingen' => $result
 
 

@@ -18,6 +18,7 @@ use AppBundle\Form\Type\MinimumVoorraadFormulier;
 
 class VoorraadController extends Controller
 {
+  //dit command geeft je de mogenlijkheid om een artikel te zoeken.
   /**
       * @Route("/voorraad/zoek", name="zoekartikel")
       */

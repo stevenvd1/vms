@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class MemberController extends Controller
 {
-
+  //dit command geeft je de mogenlijkheid om het id van een gebruiker te wijzigen.
   /**
    * @Route("/members/wijzig/{id}", name="memberwijzig")
    */

@@ -15,7 +15,7 @@ use AppBundle\Form\Type\Verwerkbestelling;
 
 class GoederenController extends Controller
 {
-
+  //dit command geeft je de mogenlijkheid om bestelde goederen te wijzigen.
   /**
    * @Route("/goederen/bestelling/wijzig/{id}", name="bestelling_wijzig")
    */
@@ -36,7 +36,7 @@ class GoederenController extends Controller
 
    }
 
-
+   //dit command geeft je de mogenlijkheid om een nieuwe bestelopdracht te doen.
 
    /**
      * @Route("/goederen/bestelopdracht", name="bestelopdracht_nieuw")
@@ -58,6 +58,7 @@ class GoederenController extends Controller
    return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
  }
+ //dit command geeft je de mogenlijkheid om de bestellingen te zien.
 
       /**
        * @Route("goederen/bestellingen", name="bestellingen")
@@ -85,7 +86,7 @@ class GoederenController extends Controller
 
       }
 
-
+      //dit command geeft je de mogenlijkheid om de te ontvangen goederen te zien.
 
        /**
         * @Route("goederen/bestellingen/te_ontvangen", name="teontvangen")
@@ -138,7 +139,7 @@ class GoederenController extends Controller
            ));
 
        }
-
+       //dit command geeft je de mogenlijkheid om de ontvangen goederen te zien.
 /**
      * @Route("/goederen/ontvangengoederen", name="ontvangengoederen")
      */

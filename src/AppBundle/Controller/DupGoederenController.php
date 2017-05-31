@@ -17,7 +17,7 @@ use AppBundle\Entity\Ontvangengoederen;
 
 class GoederenController extends Controller
 {
-
+  //dit command geeft je de mogenlijkheid om een lijst met bestelde goederen te zien.
   /**
    * @Route("/bestellingen", name="bestel_lijst")
    */
@@ -43,7 +43,7 @@ class GoederenController extends Controller
       ));
 
   }
-
+  //dit command geeft je de mogenlijkheid om een nieuwe bestelopdracht uit te voeren.
    /**
      * @Route("/goederen/bestelopdracht", name="bestelopdracht_nieuw")
      */
@@ -72,7 +72,7 @@ class GoederenController extends Controller
     		return new Response($this->render('goederen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
     	}
-
+      //dit command geeft je de mogenlijkheid om de ontvangen goederen in te zien.
       /**
      * @Route("/goederen/ontvangst", name="ontvangengoederen")
      */

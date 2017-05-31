@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class SecurityController extends Controller
 {
-
+  //dit command geeft je de mogenlijkheid om in te loggen 
  /**
      * @Route("/login", name="login")
      */

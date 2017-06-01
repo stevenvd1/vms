@@ -34,10 +34,11 @@ class ArtikelenController extends Controller
           $request->query->getInt('limit', 10)
         );
 
-        
+
 
         return $this->render('artikel/index.html.twig', array(
           'artikelen' => $result,
+
 
 
         ));

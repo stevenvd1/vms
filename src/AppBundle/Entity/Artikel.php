@@ -124,7 +124,8 @@ class Artikel
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer") */
+     * @ORM\Column(name="status", type="integer")
+     */
     private $status;
 
 

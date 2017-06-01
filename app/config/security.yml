@@ -19,6 +19,12 @@ security:
                     magazijnmeester:
                         password: $2y$13$.mz77fGlPalMSQt8GesBCeP7Cl9DC7.bqmmP3FXpTYlY/8CwHv1Ba
                         roles: 'ROLE_USER'
+                    beheerder:
+                        password: $2y$13$7kQTtiDC.sYuw98bKM1x0e35ksWMLYwGEewNpCszWR4UkQbWv/kbO
+                        roles: 'ROLE_ADMIN'
+                    applicatiebeheerder:
+                        password: $2y$13$w98dqikHShspKyVbAL3bV.TWAKH8v4USY.wbV.izOH4ujBoatyDDS
+                        roles: 'ROLE_ADMIN'
 
     encoders:
         Symfony\Component\Security\Core\User\User:

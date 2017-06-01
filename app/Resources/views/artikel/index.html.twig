@@ -34,7 +34,7 @@
 <td>{{artikel.bestelserie}}</td>
 </tr>
 {% if artikel.voorraad < artikel.MinVoorraad %}
-    <p>Het volgende artikel zit onder de minimumvoorraad: <font size="3" color="red">{{artikel.artikelnr}}</font></p>
+    <p>Het volgende artikel zit onder de minimumvoorraad: <font size="3" color="red"><a href=../artikelen/detailles/{{artikel.artikelnr}}>{{artikel.artikelnr}}</a></font></p>
 {% endif %}
 
 {% endif %}

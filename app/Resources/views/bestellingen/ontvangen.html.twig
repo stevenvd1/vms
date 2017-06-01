@@ -5,7 +5,7 @@
 {% block body %}
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 <br>
-<h2 class="page-header">Afgekeurd</h2>
+<h2 class="page-header">Ontvangen</h2>
 <table class="table table-striped">
 <thead>
 <tr>
@@ -35,7 +35,7 @@
 {% endfor %}
 </tbody>
 </table>
-
+<td><a class="btn btn-danger" href="{{ path('afgekeurd') }}">Afgekeurde Bestellingen</a></td>
 <div class="navigation">
     {{ knp_pagination_render(bestellingen) }}
 </div>

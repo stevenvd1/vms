@@ -25,8 +25,13 @@ class Ontvangenform extends AbstractType
             ->add('datum', TextType::class);
 
     $builder
-            ->add('kwaliteit', TextType::class)
-    ;
+            ->add('kwaliteit', ChoiceType::class, array(
+                'choices'  => array(
+
+                    'Goed' => 0,
+                    'Slecht' => 1,
+                ),
+            ));
     $builder->add('status', ChoiceType::class, array(
         'choices'  => array(
 

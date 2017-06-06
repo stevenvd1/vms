@@ -44,8 +44,8 @@ class Bestelopdracht
 
     /**
      * @var string
-     * @ORM\ManyToOne(targetEntity="leverancier", inversedBy="naam")
-     * @ORM\JoinColumn(name="leverancier", referencedColumnName="naam")
+     * @ORM\ManyToOne(targetEntity="leverancier", inversedBy="namen")
+     * @ORM\JoinColumn(name="naamleverancier", referencedColumnName="naam")
      * @ORM\Column(name="leverancier", type="string", length=255)
      */
     private $leverancier;

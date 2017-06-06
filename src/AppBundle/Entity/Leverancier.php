@@ -31,6 +31,12 @@ class Leverancier
     private $naam;
 
     /**
+     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="leverancier")
+     */
+    private $namen;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -63,4 +69,9 @@ class Leverancier
     {
         return $this->naam;
     }
+
+    public function __construct()
+      {
+          $this->namen = new ArrayCollection();
+      }
 }

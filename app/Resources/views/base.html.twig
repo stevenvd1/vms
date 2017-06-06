@@ -22,6 +22,7 @@
 {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/homepage.css') }}" />
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,10 +55,13 @@
           <ul class="dropdown-menu">
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/">Artikel Overzicht</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/nieuw">Artikel Toevoegen</a></li>
+            {% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
+            {% elseif is_granted('ROLE_ADMIN') %}
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/wijzig">Artikel Wijzigen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/artikelen/verwijder">Artikel Verwijderen</a></li>
             <li><a href="http://localhost/vms/web/app_dev.php/zoek/magazijnlocatie/">Magazijnlocatie opvragen</a></li>
-
+            {% else %}
+            {% endif %}
           </ul>
         </li>
         <li class="dropdown">

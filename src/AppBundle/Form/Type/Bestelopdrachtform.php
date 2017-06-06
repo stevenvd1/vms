@@ -41,7 +41,7 @@ $builder
 
     // used to render a select box, check boxes or radios
     // 'multiple' => true,
-    'expanded' => true,
+
 ));
 
 

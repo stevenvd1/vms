@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 //EntiteitType vervangen door b.v. KlantType
@@ -21,11 +22,16 @@ class Ontvangenform extends AbstractType
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
     $builder
-            ->add('datum', TextType::class)
-    ;
+            ->add('datum', TextType::class);
+
     $builder
-            ->add('kwaliteit', TextType::class)
-    ;
+            ->add('kwaliteit', ChoiceType::class, array(
+                'choices'  => array(
+
+                    'Goed' => 0,
+                    'Slecht' => 1,
+                ),
+            ));
     $builder->add('status', ChoiceType::class, array(
         'choices'  => array(
 

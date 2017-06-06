@@ -5,7 +5,6 @@
 <h2 class="page-header">Artikelen overzicht</h2>
 <table class="table table-striped">
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
-
 <thead>
 <tr>
 <th>Artikelnummer</th>
@@ -34,14 +33,27 @@
 <td>{{artikel.Voorraad}}</td>
 <td>{{artikel.bestelserie}}</td>
 </tr>
+{% if artikel.voorraad < artikel.MinVoorraad %}
+    <p>Het volgende artikel zit onder de minimumvoorraad: <font size="3" color="red"><a href=../artikelen/detailles/{{artikel.artikelnr}}>{{artikel.artikelnr}}</a></font></p>
+{% endif %}
 
 {% endif %}
 {% endif %}
 {% endfor %}
+
+
+
+
+{# some content.. #}
+
+
 </tbody>
 </table>
-<td><a class="btn btn-success" href="{{ path('verwijderde_artikelen') }}">Verwijderde Artikelen</a></td>
+<td><a class="btn btn-danger" href="{{ path('verwijderde_artikelen') }}">Verwijderde Artikelen</a></td>
 <div class="navigation">
     {{ knp_pagination_render(artikelen) }}
 </div>
+<br>
+
+
 {% endblock %}

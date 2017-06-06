@@ -29,7 +29,7 @@ class Artikel
     /**
      * @var string
      *
-     * @ORM\Column(name="naam", type="string", length=255)
+     * @ORM\Column(name="naam", type="string", length=255, nullable=true)
      */
     private $naam;
 
@@ -124,7 +124,8 @@ class Artikel
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer") */
+     * @ORM\Column(name="status", type="integer")
+     */
     private $status;
 
 

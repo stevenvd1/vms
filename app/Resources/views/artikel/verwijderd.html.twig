@@ -20,24 +20,27 @@
 </tr>
 </thead>
 <tbody>
-{% for verwijder in verwijderd %}
+{% for bestelling in bestellingen %}
+{% if loop.index % 1 == 0 or loop.last %}
+{% if bestelling.status == 1 %}
 <tr>
-<th scope="row"> {{verwijder.artikelnr}} </th>
-<td>{{verwijder.naam}}</td>
-<td>{{verwijder.specs}}</td>
-<td>{{verwijder.locatie}}</td>
-<td>€{{verwijder.inkoopprijs}},-</td>
-<td>€{{verwijder.verkoopprijs}},-</td>
-<td>{{verwijder.MinVoorraad}}</td>
-<td>{{verwijder.Voorraad}}</td>
-<td>{{verwijder.bestelserie}}</td>
+<th scope="row"> {{bestelling.artikelnr}} </th>
+<td>{{bestelling.naam}}</td>
+<td>{{bestelling.specs}}</td>
+<td>{{bestelling.locatie}}</td>
+<td>€{{bestelling.inkoopprijs}},-</td>
+<td>€{{bestelling.verkoopprijs}},-</td>
+<td>{{bestelling.MinVoorraad}}</td>
+<td>{{bestelling.Voorraad}}</td>
+<td>{{bestelling.bestelserie}}</td>
 </tr>
-
+{% endif %}
+{% endif %}
 {% endfor %}
 </tbody>
 </table>
 
 <div class="navigation">
-    {{ knp_pagination_render(verwijderd) }}
+    {{ knp_pagination_render(bestellingen) }}
 </div>
 {% endblock %}

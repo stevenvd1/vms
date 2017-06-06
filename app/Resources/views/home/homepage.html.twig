@@ -2,15 +2,20 @@
 
 {% block body %}
 
-
-<br>
 <h2 class="page-header">Voorraad Management Systeem Lunenburg</h2>
 <table class="table table-striped">
-<thead>
-</br>
-<p><b>31-05-2017 </b>Het systeem heeft een pagina minimumvoorraad erbij gekregen.</p></br>
-<p><b>30-05-2017 </b>Gebruikers zijn aangemaakt en hebben rechten toegekregen.</p>
-</thead>
+{% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
+{% elseif is_granted('ROLE_ADMIN') %}
+<p>Artikel met artikelnummer <font size="3" color="red">1010101010</font> is onder de minimum voorraad.</p>
+{% else %}
+{% endif %}
+</tbody>
 </table>
+{% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
+{% elseif is_granted('ROLE_ADMIN') %}
 <td><a class="btn btn-danger" href="{{ path('minimumvoorraadartikelen') }}">Minimum Voorraad</a></td>
+{% else %}
+{% endif %}
+
+
 {% endblock %}

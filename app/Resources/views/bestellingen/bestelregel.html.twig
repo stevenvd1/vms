@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<center><h3>Wilt u nog meer artikelen bestellen?</h3>
+<p>
+
+    <a href="{{path ('bestelopdracht_nieuw_regel', {'bestelordernummer':bestelopdracht.bestelordernummer})}}"><button type="button" class="btn btn-primary btn-lg">Ja</button></a>&nbsp of &nbsp
+    <a href="{{path ('bestellingen')}}"><button type="button" class="btn btn-secondary btn-lg">Nee</button></a></center>
+
+<hr>
+
+    {% endblock %}

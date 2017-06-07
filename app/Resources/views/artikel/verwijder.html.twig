@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<form method="post" action="">
+    {{ form_widget(form) }}
+    <input class="btn btn-default" type="submit">
+    <a href="javascript:history.back()">Annuleren</a>
+</form>
+<strong>Druk op verzenden om het artikel uit de actieve lijst van artikelen te verwijderen.</strong>
+{% endblock %}

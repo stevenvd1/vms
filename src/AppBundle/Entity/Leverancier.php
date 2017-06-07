@@ -23,12 +23,28 @@ class Leverancier
     private $id;
 
     /**
-     * @var string
-     *
+* @var string
+    *
      * @ORM\Column(name="naam", type="string")
      * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="leverancier")
      */
     private $naam;
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     *
+     * @return Leverancier
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+
 
     /**
      * Get id
@@ -64,17 +80,8 @@ class Leverancier
         return $this->naam;
     }
 
-    /**
-    * Get Naam
-    *@return string
-    */
-   public function __toString()
-    {
-      return $this->getNaam();
-    }
-
     public function __construct()
       {
-          $this->namen = new ArrayCollection();
+          $this->naam = new ArrayCollection();
       }
 }

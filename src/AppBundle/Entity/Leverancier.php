@@ -84,4 +84,13 @@ class Leverancier
       {
           $this->naam = new ArrayCollection();
       }
+
+      /**
+* Get Naam
+*@return string
+*/
+public function __toString()
+{
+return $this->getNaam();
+}
 }

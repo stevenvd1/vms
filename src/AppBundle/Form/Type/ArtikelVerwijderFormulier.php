@@ -13,36 +13,18 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 //EntiteitType vervangen door b.v. KlantType
-class ArtikelWijzigFormulier extends AbstractType
+class ArtikelVerwijderFormulier extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
-    $builder
-            ->add('artikelnr', IntegerType::class);
-$builder
-        ->add('naam', TextType::class);
-$builder
-        ->add('specs', TextType::class)
-;
-$builder
-        ->add('locatie', TextType::class)
-;
-$builder
-        ->add('inkoopprijs', MoneyType::class)
-;
-$builder
-        ->add('verkoopprijs', MoneyType::class)
-;
-$builder
-        ->add('minVoorraad', IntegerType::class)
-;
-$builder
-        ->add('voorraad', IntegerType::class)
-;
-$builder
-        ->add('bestelserie', IntegerType::class)
-;
+
+    $builder->add('status', ChoiceType::class, array(
+        'choices'  => array(
+
+            'Inactief' => 1,
+        ),
+    ));
 
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types

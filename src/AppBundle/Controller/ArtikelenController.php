@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Artikel;
 use AppBundle\Form\Type\ArtikelFormulier;
 use AppBundle\Form\Type\ArtikelWijzigFormulier;
+use AppBundle\Form\Type\ArtikelVerwijderFormulier;
+use AppBundle\Form\Type\ArtikelActiveerFormulier;
 
 class ArtikelenController extends Controller
 {
@@ -70,20 +72,29 @@ class ArtikelenController extends Controller
       /**
        * @Route("/artikelen/verwijder/{artikelnr}", name="artikel_verwijder")
        */
-      public function verwijderArtikel($artikelnr, Request $request)
-      {
-      			$em = $this->getDoctrine()->getManager();
-      			$artikel = $em->getRepository('AppBundle:Artikel')->find($artikelnr);
+       /**
+        * @Route("/artikelen/verwijder/{artikelnr}", name="artikel_verwijdering")
+        */
+       public function verwijderingArtikel($artikelnr, Request $request) {
+       $verwijderingArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnr);
+        $form = $this->createForm(ArtikelVerwijderFormulier::class, $verwijderingArtikel);
 
-            $em->remove($artikel);
-      			$em->flush();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($verwijderingArtikel);
+        $em->flush();
+        $this->addFlash(
+          'notice',
+          'Artikel Verwijderd'
+        );
+        return $this->redirect($this->generateurl("artikel_lijst"));
+        }
 
-            $this->addFlash(
-              'notice',
-              'Artikel Verwijderd'
-            );
-      			return $this->redirect($this->generateurl("artikel_lijst"));
-      		}
+        return new Response($this->render('artikel/verwijder.html.twig', array('form' => $form->createView())));
+
+
+        }
           //dit command geeft je de mogenlijkheid om het artikel te verwijderen
           /**
            * @Route("/artikelen/verwijder/", name="verwijderart")
@@ -128,6 +139,8 @@ class ArtikelenController extends Controller
 
 
      }
+
+
 //dit command geeft je de mogenlijkheid om details over een artikel te zien
     /**
      * @Route("/artikelen/detailles/{artikelnr}", name="artikel_detailles")
@@ -140,6 +153,26 @@ class ArtikelenController extends Controller
           'artikel' => $artikel
 ));
 }
+
+/**
+ * @Route("/artikelen/activeer/{artikelnr}", name="artikel_activeer")
+ */
+public function activeerArtikel($artikelnr, Request $request) {
+$bestaandeArtikel = $this->getDoctrine()->getRepository("AppBundle:Artikel")->find($artikelnr);
+ $form = $this->createForm(ArtikelActiveerFormulier::class, $bestaandeArtikel);
+
+ $form->handleRequest($request);
+ if ($form->isSubmitted() && $form->isValid()) {
+ $em = $this->getDoctrine()->getManager();
+ $em->persist($bestaandeArtikel);
+ $em->flush();
+ return $this->redirect($this->generateurl("artikel_lijst"));
+ }
+
+ return new Response($this->render('artikel/wijzig.html.twig', array('form' => $form->createView())));
+
+
+ }
 
 //dit command geeft je de mogenlijkheid om een artikelnummer op te zoeken.
   /**

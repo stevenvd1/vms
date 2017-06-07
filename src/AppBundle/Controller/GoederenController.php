@@ -14,6 +14,7 @@ use AppBundle\Form\Type\Bestelopdrachtform;
 use AppBundle\Form\Type\Verwerkbestelling;
 use AppBundle\Form\Type\Ontvangenform;
 use AppBundle\Form\Type\Afkeurenform;
+use AppBundle\Form\Type\Bestelregelform;
 
 class GoederenController extends Controller
 {
@@ -93,16 +94,67 @@ class GoederenController extends Controller
 
    $form->handleRequest($request);
    if ($form->isSubmitted() && $form->isValid()) {
+
+
+     $bestaandeBestelopdrachten = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->findAll();
+     if (count($bestaandeBestelopdrachten)==0) {
+       $nieuweBestelling->setBestelordernummer(1);
+     }
+else {
+  $laatsteBestelling = $bestaandeBestelopdrachten[count($bestaandeBestelopdrachten)-1];
+  $nieuweBestelling -> setBestelordernummer($laatsteBestelling->getBestelordernummer() +1);
+}
+
+$nieuweBestelling -> setBestelregel(1);
+
+
+
+
+
      $em = $this->getDoctrine()->getManager();
      $em->persist($nieuweBestelling);
      $em->flush();
-     return $this->redirect($this->generateurl("bestellingen"));
+     return new Response($this->renderView("bestellingen/bestelregel.html.twig", array('bestelopdracht' => $nieuweBestelling)));
    }
 
 
    return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
 
  }
+
+ /**
+   * @Route("/goederen/bestelopdracht/nieuw/regel/{bestelordernummer}", name="bestelopdracht_nieuw_regel")
+   */
+
+ public function nieuweRegel(Request $request, $bestelordernummer) {
+      $bestaandeBestelopdrachten = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->findByBestelordernummer($bestelordernummer);
+      $bestaandeBestelopdracht = $bestaandeBestelopdrachten[0];
+      $nieuweBestelregel = new Bestelopdracht;
+      $nieuweBestelregel -> setLeverancier($bestaandeBestelopdracht -> getLeverancier());
+
+      $nieuweBestelregel -> setBestelregel(count($bestaandeBestelopdrachten)+1);
+      $nieuweBestelregel -> setStatus(0);
+      $nieuweBestelregel -> setBestelordernummer($bestaandeBestelopdracht->getBestelordernummer());
+
+      $form = $this->createForm(Bestelregelform::class, $nieuweBestelregel);
+
+
+
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+      $em = $this->getDoctrine()->getManager();
+
+   $em->persist($nieuweBestelregel);
+   $em->flush();
+   return new Response($this->renderView("bestellingen/bestelregel.html.twig", array('bestelopdracht' => $nieuweBestelregel)));
+ }
+
+
+ return new Response($this->render('bestellingen/Bestelopdracht.html.twig', array('form' => $form->createView())));
+
+}
+
+
  //dit command geeft je de mogenlijkheid om de bestellingen te zien.
 
       /**

@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 
 
 //EntiteitType vervangen door b.v. KlantType
@@ -46,7 +48,9 @@ $builder
 $builder
         ->add('aantal', IntegerType::class)
 ;
-
+$builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            // ... add a choice list of friends of the current application user
+        });
 		//zie
 		//http://symfony.com/doc/current/forms.html#built-in-field-types
 		//voor meer typen invoer

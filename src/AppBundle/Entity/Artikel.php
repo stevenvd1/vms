@@ -21,7 +21,7 @@ class Artikel
      * @Assert\Length(
      *      min = 10,
      *      max = 10,
-     *      exactMessage = "Het artikelnummer moet minimaal uit 10 cijfers bestaan",
+     *      exactMessage = "Het artikelnummer moet uit 10 cijfers bestaan",
      * )
      */
     private $artikelnr;
@@ -114,11 +114,11 @@ class Artikel
      *
      * @ORM\Column(name="bestelserie", type="integer", length=255)
      * @Assert\Length(
-     *      max = 6,
+     *      max = 4,
      *      maxMessage = "Ongeldige bestelserie"
      * )
      */
-      //de betselserie kan maximaal 999999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
+      //de betselserie kan maximaal 9999 zijn en er zal een bericht opduiken zodra dit niet aan deze criteria voldoet.
     private $bestelserie;
 
     /**

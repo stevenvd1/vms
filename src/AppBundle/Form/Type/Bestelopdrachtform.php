@@ -29,7 +29,10 @@ $builder
         ->add('bestelregel', IntegerType::class)
 ;
 $builder
-        ->add('leverancier', TextType::class);
+        ->add('leverancier', EntityType::class, array(
+            'class' => 'AppBundle:Leverancier',
+            'choice_label' => 'naam',
+));
 $builder
         ->add('artikel', EntityType::class, array(
     // query choices from this entity

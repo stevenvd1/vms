@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<br>
+<h2 class="page-header">Retour overzicht</h2>
+<table class="table table-striped">
+<link rel="stylesheet" href="{{ asset('css/table.css') }}" />
+<thead>
+<tr>
+<th data-field="glyphicon glyphicon-list-alt">Artikelnummer</th>
+<th>Aantal</th>
+</tr>
+</thead>
+<tbody>
+{% for Retour in Retouren %}
+<tr>
+<th scope="row"> {{Retour.Artikelnummer}} </th>
+<td>{{Retour.aantal}}</td>
+</tr>
+
+{# some content.. #}
+
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

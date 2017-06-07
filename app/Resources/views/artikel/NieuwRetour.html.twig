@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ <h2 class="page-header">Nieuwe Retour</h2>
+ <form method="post" action="">
+     {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success">Verzenden</button>
+     <a class="btn btn-danger" href="http://localhost/vms/web/app_dev.php/retour/overzicht">Annuleren</a>
+ </form>
+{% endblock %}

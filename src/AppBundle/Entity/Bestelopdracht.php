@@ -72,6 +72,13 @@ class Bestelopdracht
     private $aantal;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="artikelnummer", type="integer")
+     */
+    private $artikelnummer;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="locatie", type="string", length=255)
@@ -283,6 +290,30 @@ class Bestelopdracht
     public function getAantal()
     {
         return $this->aantal;
+    }
+
+    /**
+     * Set artikelnummer
+     *
+     * @param integer $Artikelnummer
+     *
+     * @return artikelnummer
+     */
+    public function setartikelnummer($artikelnummer)
+    {
+        $this->artikelnummer = $artikelnummer;
+
+        return $this;
+    }
+
+    /**
+     * Get artikelnummer
+     *
+     * @return int
+     */
+    public function getArtikelnummer()
+    {
+        return $this->artikelnummer;
     }
 
     /**

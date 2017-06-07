@@ -25,6 +25,19 @@ security:
                     applicatiebeheerder:
                         password: $2y$13$w98dqikHShspKyVbAL3bV.TWAKH8v4USY.wbV.izOH4ujBoatyDDS
                         roles: 'ROLE_ADMIN'
+                    hoofdfinanciën:
+                        password: $2y$13$iG93CcNQa7syQu/iSkvR..bR9FE5jAqkA6LdwoHjxqLnYist1BAoO
+                        roles: 'ROLE_ADMIN'
+                    ontwikkelaar:
+                        password: $2y$13$1cCTG9tVTllwzesyk.L4nuJn.8ds52QabPHRyx8q.vHI0Npi1Cjey
+                        roles: 'ROLE_ADMIN'
+                    reparateur:
+                        password: $2y$13$GOn41O2.MN6DxDKWy65Flet97crUn3Fe5/80VUK5cf8gL9k18awDW
+                        roles: 'ROLE_ADMIN'
+                    expediteur:
+                        password: $2y$13$0yzHe5gUtOsCpCWvTem4oe2kZg3j4.MhiC6LxwDfESKMvKdBH3qTm
+                        roles: 'ROLE_ADMIN'
+                    
 
     encoders:
         Symfony\Component\Security\Core\User\User:

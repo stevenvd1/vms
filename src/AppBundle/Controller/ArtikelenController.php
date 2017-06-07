@@ -273,4 +273,19 @@ public function zoekvoorraad(Request $request)
        'artikel' => $artikel
 ));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

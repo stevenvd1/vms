@@ -31,12 +31,6 @@ class Leverancier
     private $naam;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bestelopdracht", mappedBy="leverancier")
-     */
-    private $namen;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -68,6 +62,15 @@ class Leverancier
     public function getNaam()
     {
         return $this->naam;
+    }
+
+    /**
+    * Get Naam
+    *@return string
+    */
+   public function __toString()
+    {
+      return $this->getNaam();
     }
 
     public function __construct()

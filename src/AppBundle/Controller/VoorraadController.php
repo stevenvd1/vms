@@ -42,4 +42,25 @@ class VoorraadController extends Controller
      'res' => $res));
   }
 
+  /**
+      * @Route("/voorraad/zoeknaam", name="zoekartikelnaam")
+      */
+  public function zoekartikelnaam(Request $request){
+
+    $data = $request->request->get('naam');
+
+
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery(
+     'SELECT a FROM artikel a
+     WHERE a.naam = :data')
+    ->setParameter('data',$data);
+
+
+  $res = $query->getResult();
+
+  return $this->render('zoek.html.twig', array(
+     'res' => $res));
+  }
+
 }

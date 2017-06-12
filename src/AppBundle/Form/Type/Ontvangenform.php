@@ -22,7 +22,15 @@ class Ontvangenform extends AbstractType
 		//gebruiken wat je nodig hebt, de id hoeft er niet bij als deze auto increment is
 
     $builder
-            ->add('datum', TextType::class);
+            ->add('datum', DateType::class, array(
+              'widget' => 'choice',
+              'format' => 'dd-MMMM-yyy',
+              'placeholder' => array(
+                'day' => 'Dag', 'month' => 'Maand', 'year' => 'Jaar')
+
+
+              )
+            );
 
     $builder
             ->add('kwaliteit', ChoiceType::class, array(

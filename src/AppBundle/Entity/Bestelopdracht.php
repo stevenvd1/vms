@@ -26,6 +26,11 @@ class Bestelopdracht
      * @var int
      *
      * @ORM\Column(name="zendingsnummer", type="integer")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 4,
+     *      exactMessage = "Het zendingsnummer moet uit 4 cijfers bestaan",
+     * )
      */
     private $zendingsnummer;
 
@@ -68,7 +73,13 @@ class Bestelopdracht
      * @var int
      *
      * @ORM\Column(name="aantal", type="integer")
-     */
+     * @Assert\Range(
+    *      min = 1,
+    *      max = 1000,
+    *      minMessage = "Het minimum aantal is 1",
+    *      maxMessage = "Het maximum aantal is 1000"
+    * )
+    */
     private $aantal;
 
     /**
@@ -89,13 +100,18 @@ class Bestelopdracht
      * @var string
      *
      * @ORM\Column(name="keuringseisen", type="string", length=255)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 4,
+     *      exactMessage = "De keuringseisen moeten uit 4 cijfers bestaan",
+     * )
      */
     private $keuringseisen;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="datum", type="string")
+     * @ORM\Column(name="datum", type="datetime")
      */
     private $datum;
 
@@ -367,7 +383,7 @@ class Bestelopdracht
     /**
      * Set datum
      *
-     * @param string $datum
+     * @param \DateTime $datum
      *
      * @return Bestelopdracht
      */
@@ -381,7 +397,7 @@ class Bestelopdracht
     /**
      * Get datum
      *
-     * @return string
+     * @return \DateTime
      */
     public function getDatum()
     {

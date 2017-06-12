@@ -24,14 +24,21 @@ class ArtikelenController extends Controller
     public function alleArtikelen(Request $request)
     {
 
-      $artikelen = $this->getDoctrine()->getRepository('AppBundle:Artikel')->findAll();
+
+      $em = $this->getDoctrine()->getManager();
+       $queryBuilder = $em->getRepository('AppBundle:Artikel')->createQueryBuilder('bp');
+       if ($request->query->getAlnum('filter')) {
+           $queryBuilder->where('bp.naam LIKE :naam')
+               ->setParameter('naam', '%' . $request->query->getAlnum('filter') . '%');
+       }
+       $query = $queryBuilder->getQuery();
 
       /**
       * @var $paginator \Knp\Component\Pager\Paginator
       */
       $paginator  = $this->get('knp_paginator');
       $result = $paginator->paginate(
-          $artikelen,
+          $query,
           $request->query->getInt('page', 1),
           $request->query->getInt('limit', 10)
         );

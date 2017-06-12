@@ -22,12 +22,15 @@
 {% if loop.index % 1 == 0 or loop.last %}
 {% if bestelling.status == 2 %}
 <tr>
-<th scope="row"> {{bestelling.datum}} </th>
+<th scope="row"> {{bestelling.datum|date('d-m-Y') }} </th>
 <td>{{bestelling.leverancier}}</td>
 <td>{{bestelling.artikel.artikelnr}}</td>
 <td>{{bestelling.artikel.naam}}</td>
 <td>{{bestelling.aantal}}</td>
-<td>{{bestelling.kwaliteit}}</td>
+<td>{% if bestelling.kwaliteit == 0 %}
+      Goed
+    {% else %}
+      Slecht{% endif %}</td>
 <td><a href="http://localhost/vms/web/app_dev.php/goederen/bestelling/afkeuren/{{ bestelling.id }}" class="btn btn-danger">Afkeuren</a></td>
 </tr>
 {% endif %}

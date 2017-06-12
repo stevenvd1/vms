@@ -28,9 +28,9 @@ class Verwerkbestelling extends AbstractType
     ;
     $builder->add('status', ChoiceType::class, array(
         'choices'  => array(
-            'Besteld' => 0,
+          
             'Te ontvangen' => 1,
-            'Ontvangen' => 2,
+
         ),
     ));
 		//zie

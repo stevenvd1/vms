@@ -1,21 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('css/homepage.css') }}" />
+<center><img src="http://orvosiprogram.hu/wp-content/blogs.dir/3/files/2013/06/felkialtojel.png"></img><h4>Kijk elke dag <a href=http://localhost/vms/web/app_dev.php/artikel/minimumvoorraad>hier</a> even of er artikelen onder de minimumvoorraad aanwezig zijn.</h4></center>
+<center><h1 class="page-header">Voorraad Management Systeem Lunenburg</h1>
+<p>Welkom op het Voorraad Management Systeem van Lunenburg. U kunt hier informatie uit het systeem opvragen maar ook bewerken en beheren.</p></center>
+<br><br><br>
+<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3 responsive-image">
+													<p><a title="Artikelen" href="http://localhost/vms/web/app_dev.php/artikelen/"><img title="" onmouseover="this.src='https://cdn0.iconfinder.com/data/icons/containers/256/self2.png';" onmouseout="this.src='https://cdn0.iconfinder.com/data/icons/containers/256/self2.png';" src="https://cdn0.iconfinder.com/data/icons/containers/256/self2.png"  width="262" height="260"><center><h1>Artikelen</h1></center></a></p>											</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 responsive-image">
+													<p><a title="Bestellen" href="http://localhost/vms/web/app_dev.php/goederen/bestelopdracht"><img title="" onmouseover="this.src='https://cdn0.iconfinder.com/data/icons/containers/512/fork6.png';" onmouseout="this.src=https://cdn0.iconfinder.com/data/icons/containers/512/fork6.png;" src="https://cdn0.iconfinder.com/data/icons/containers/512/fork6.png"  width="262" height="260"><center><h1>Bestellen</h1></center></a></p>											</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 responsive-image">
+													<p><a title="Voorraad" href="http://localhost/vms/web/app_dev.php/zoek/voorraad/"><img onmouseover="this.src='http://www.voorraadopkoper.nl/beheer/wp-content/uploads/2014/10/grote-aantallen.png';" onmouseout="this.src='http://www.voorraadopkoper.nl/beheer/wp-content/uploads/2014/10/grote-aantallen.png';" src="http://www.voorraadopkoper.nl/beheer/wp-content/uploads/2014/10/grote-aantallen.png" alt="" width="263" height="260"><center><h1>Voorraad</h1></center></a></p>											</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 responsive-image">
+													<p><a title="Retour" href="http://localhost/vms/web/app_dev.php/retour/overzicht"><img onmouseover="this.src='https://cdn0.iconfinder.com/data/icons/containers/256/handle3.png';" onmouseout="this.src='https://cdn0.iconfinder.com/data/icons/containers/256/handle3.png';" src="https://cdn0.iconfinder.com/data/icons/containers/256/handle3.png" alt="" width="266" height="264"><center><h1>Retour</h1></center></a></p>											</div>
+				</div>
 
-<h2 class="page-header">Voorraad Management Systeem Lunenburg</h2>
+
+
 <table class="table table-striped">
 {% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
 {% elseif is_granted('ROLE_ADMIN') %}
-<p>Artikel met artikelnummer <font size="3" color="red">1010101010</font> is onder de minimum voorraad.</p>
+
 {% else %}
 {% endif %}
 </tbody>
 </table>
 {% if not is_granted('ROLE_MAGAZIJNMEESTER') %}
 {% elseif is_granted('ROLE_ADMIN') %}
-<td><a class="btn btn-danger" href="{{ path('minimumvoorraadartikelen') }}">Minimum Voorraad</a></td>
+
 {% else %}
 {% endif %}
+
 
 
 {% endblock %}

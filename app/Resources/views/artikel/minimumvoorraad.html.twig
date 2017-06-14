@@ -1,15 +1,15 @@
 {# dit twig helpt mee met het opbouwen van het minimumvoorraad functie #}
 {% extends 'base.html.twig' %}
 {% block body %}
-	<h2 class="page-header">Overzicht Artikelen onder de minimumvoorraad</h2>
+	<center><h1 class="page-header">Artikelen onder mimimumvoorraad</h1></center>
 	<table class="table table-striped">
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 	<thead>
 	<tr>
 	<th>Artikelnummer</th>
 	<th>Naam</th>
-	<th>locatie</th>
-	<th>Minimale voorraad</th>
+	<th>Locatie</th>
+	<th>Minimaal</th>
 	<th>Voorraad</th>
 	<th>Inkoopprijs</th>
 	<th>Bestelserie</th>
@@ -18,7 +18,7 @@
 	<tbody>
 	{% for artikel in artikelen %}
 	<tr>
-				<th scope="row"> {{artikel.artikelnr}} </th>
+				<td scope="row"> {{artikel.artikelnr}} </td>
 				<td>{{artikel.specs}} </td>
 				<td>{{artikel.locatie}} </td>
 				<td>{{artikel.minVoorraad}} </td>

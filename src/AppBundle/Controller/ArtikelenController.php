@@ -27,9 +27,13 @@ class ArtikelenController extends Controller
 
       $em = $this->getDoctrine()->getManager();
        $queryBuilder = $em->getRepository('AppBundle:Artikel')->createQueryBuilder('bp');
-       if ($request->query->getAlnum('filter')) {
+       if ($request->query->getAlnum('naam')) {
            $queryBuilder->where('bp.naam LIKE :naam')
-               ->setParameter('naam', '%' . $request->query->getAlnum('filter') . '%');
+               ->setParameter('naam', '%' . $request->query->getAlnum('naam') . '%');
+       }
+       if ($request->query->getAlnum('nr')) {
+           $queryBuilder->where('bp.artikelnr LIKE :artikelnr')
+               ->setParameter('artikelnr', '%' . $request->query->getAlnum('nr') . '%');
        }
        $query = $queryBuilder->getQuery();
 

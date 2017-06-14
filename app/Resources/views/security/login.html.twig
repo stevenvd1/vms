@@ -6,7 +6,8 @@
 {% endif %}
 
 {% block body %}
-
+<center><img src="http://i.imgur.com/G0WEpFr.png"></img></center>
+<hr>
 <form action="{{ path('login') }}" method="post" class="form-signin">
       <h2 class="form-signin-heading">Inloggen</h2>
       <label for="username" class="sr-only">Gebruikersnaam</label>
@@ -15,10 +16,10 @@
       <input type="password" id="password" name="_password" class="form-control" placeholder="Wachtwoord" required />
       <div class="checkbox">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> Onthouden
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Inloggen</button>
     </form>
 
 
@@ -28,6 +29,7 @@
 {% endblock %}
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/login.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>

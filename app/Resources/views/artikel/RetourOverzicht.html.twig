@@ -3,7 +3,7 @@
 
 {% block body %}
 <br>
-<h2 class="page-header">Retour overzicht</h2>
+<center><h1 class="page-header">Retour overzicht</h1></center>
 <table class="table table-striped">
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 <thead>
@@ -15,7 +15,7 @@
 <tbody>
 {% for Retour in Retouren %}
 <tr>
-<th scope="row"> {{Retour.Artikelnummer}} </th>
+<td scope="row"> {{Retour.Artikelnummer}} </td>
 <td>{{Retour.aantal}}</td>
 </tr>
 

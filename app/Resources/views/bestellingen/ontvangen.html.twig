@@ -5,7 +5,7 @@
 {% block body %}
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 <br>
-<h2 class="page-header">Ontvangen</h2>
+<center><h1 class="page-header">Ontvangen</h1></center>
 <table class="table table-hover table-danger">
 <thead>
 <tr class="bg-primary">
@@ -22,7 +22,7 @@
 {% if loop.index % 1 == 0 or loop.last %}
 {% if bestelling.status == 2 %}
 <tr>
-<th scope="row"> {{bestelling.datum|date('d-m-Y') }} </th>
+<td scope="row"> {{bestelling.datum|date('d-m-Y') }} </td>
 <td>{{bestelling.leverancier}}</td>
 <td>{{bestelling.artikel.artikelnr}}</td>
 <td>{{bestelling.artikel.naam}}</td>

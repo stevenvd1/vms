@@ -3,10 +3,14 @@
 {% block body %}
 <br>
 
-<h2 class="page-header">Artikelen overzicht</h2><form action="" method="GET">
-    <label for="filter">Filter</label>
-    <input name="filter" type="text">
-    <button type="submit" class="btn btn-default btn-sm">Filteren</button><hr>
+<center><h1 class="page-header">Artikelen overzicht</h1></center><form action="" method="GET">
+    <center><label for="naam">Filter op Naam</label>
+    <input name="naam" type="text">
+    <button type="submit" class="btn btn-default btn-sm">Filteren</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <form action="" method="GET">
+        <label for="nr">Filter op Artikelnummer</label>
+        <input name="nr" type="text">
+        <button type="submit" class="btn btn-default btn-sm">Filteren</button><hr></center>
 <table class="table table-hover table-danger">
 
 <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
@@ -18,7 +22,7 @@
 <th>Magazijnlocatie</th>
 <th>Inkoopprijs</th>
 <th>Verkoopprijs</th>
-<th>Minimale voorraad</th>
+<th>Minimaal</th>
 <th>Voorraad</th>
 <th>Bestelserie</th>
 </tr>
@@ -27,12 +31,9 @@
 {% for artikel in artikelen %}
 {% if loop.index % 1 == 0 or loop.last %}
 {% if artikel.status == 0 %}
-{% if artikel.voorraad < artikel.MinVoorraad %}
-<h4><b><font color="orange">Onderbevooraade artikelens</font></b></h4>
-    <p>Het volgende artikel zit onder de minimumvoorraad: <font size="3" color="red"><a href=../artikelen/detailles/{{artikel.artikelnr}}>{{artikel.artikelnr}}</a></font></p>
-{% endif %}
+
 <tr>
-<th scope="row"> {{artikel.artikelnr}} </th>
+<td> {{artikel.artikelnr}} </td>
 <td>{{artikel.naam}}</td>
 <td>{{artikel.specs}}</td>
 <td>{{artikel.locatie}}</td>
